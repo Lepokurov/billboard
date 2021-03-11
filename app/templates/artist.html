@@ -1,0 +1,220 @@
+{% extends 'single_info.html' %}
+
+{% block title %}<title>{{artist.name}}</title>{% endblock %}
+
+{% block banner_image %}
+<div class="_1066d722d4c5fe45076daa358de0a969-scss banner_image-blurred_image" style="background-image: url({{artist.image}});"></div>
+{% endblock %}
+
+{% block info %}
+  {% for genre in artist.genres.values() %}
+    <a draggable="false" class="_2b067c7a307d670c6b228bc3f783c022-scss" href="/genre_show/{{genre.id}}">{{genre.name}}</a><span class="_494acef8821cbe69e59a091ea7692360-scss"></span> {% endfor %}
+{% endblock %}
+
+{% block main_image %}
+  <div class="e606f708ec76d36e4cf363817b6b2ffd-scss" draggable="true"><img aria-hidden="false" draggable="false" loading="lazy" src="{{artist.image}}" alt="{{artist.image}}" class="_64acb0e26fe0d9dff68a0e9725b2a920-scss _4c838ef3d2b6da1a61669046bbfae3d1-scss" srcset="{{artist.image}} 150w, {{artist.image}} 300w, {{artist.image}} 320w, {{artist.image}} 640w" sizes="(min-width: 1280px) 232px, 192px"></div>
+{% endblock %}
+{% block text_image %}
+  <h2 class="bab4e7e0003c98b59e58b925d59840f8-scss d043401fc6c1247d9bab1d03fb554b48-scss b4b36569a9650c59003ec88a4551c3ea-scss _7fccf2efe6726e6281233b60b6d78f1b-scss">{{artist.age}}</h2><span dir="auto" class="dc48565bba15548872ea84c715a5fee2-scss"><h1 class="a12b67e576d73f97c44f1f37026223c4-scss" as="h1" style="padding: 0.08em 0px; font-size: 48px; line-height: 48px; visibility: visible;">{{artist.name}}</h1></span>
+{% endblock %}
+
+{% block wiki %}
+  <img onclick="location.href='{{artist.wiki_link}}'" aria-hidden="false" draggable="false" loading="lazy" src="https://cdn.pixabay.com/photo/2017/08/05/11/19/logo-2582755_1280.png" alt="{{artist.name}}" class="_64acb0e26fe0d9dff68a0e9725b2a920-scss _4c838ef3d2b6da1a61669046bbfae3d1-scss inkblock" style="-webkit-box-shadow: 0 0 0 rgba(0,0,0,.5);" srcset="https://cdn.pixabay.com/photo/2017/08/05/11/19/logo-2582755_1280.png 150w, https://cdn.pixabay.com/photo/2017/08/05/11/19/logo-2582755_1280.png 300w, https://cdn.pixabay.com/photo/2017/08/05/11/19/logo-2582755_1280.png 320w, https://cdn.pixabay.com/photo/2017/08/05/11/19/logo-2582755_1280.png 640w" sizes="(min-width: 1280px) 232px, 192px">
+{% endblock %}
+
+{% block contentSpacing_table %}
+  <div role="grid" aria-rowcount="2" aria-colcount="3" aria-label="{{artist.name}}" class="_7effa9d9b3900e9698aa6e0423a1e841-scss _98a17d59ea3df3c60b9699a6afe43816-scss" tabindex="0" data-testid="track-list">
+                      <div class="_2dc8cce76d72af90f5e00e781db42541-scss">
+                        <div class="_3a60fe1505c09248ad7c72d04a0cf07f-scss bddcb131e9b40fa874148a30368d83f8-scss" role="row" aria-rowindex="1">
+                          <div class="_7c993111016a33a158645119f8a6fb12-scss" role="columnheader" aria-colindex="1" aria-sort="none" tabindex="-1">#</div>
+                          <div class="_5845794624a406a62eb5b71d3d1c4d63-scss" role="columnheader" aria-colindex="2" aria-sort="none" tabindex="-1">
+                            <div class="e6a8097cf1730653c998b6c217f22180-scss"><span class="standalone-ellipsis-one-line _61f284de1c56917f93c55a3ae121ba1c-scss" as="span">Title song</span></div>
+                          </div>
+                          <div class="b9f411c6b990949776c8edf3daeb26ad-scss" role="columnheader" aria-colindex="3" aria-sort="none" tabindex="-1">
+                            <div aria-label="Year" class="e6a8097cf1730653c998b6c217f22180-scss d4e605b704072b48bba794842cb8f78a-scss">
+                              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                <title>Year</title>
+                                <path d="M7.999 3H6.999V7V8H7.999H9.999V7H7.999V3ZM7.5 0C3.358 0 0 3.358 0 7.5C0 11.642 3.358 15 7.5 15C11.642 15 15 11.642 15 7.5C15 3.358 11.642 0 7.5 0ZM7.5 14C3.916 14 1 11.084 1 7.5C1 3.916 3.916 1 7.5 1C11.084 1 14 3.916 14 7.5C14 11.084 11.084 14 7.5 14Z" fill="currentColor"></path>
+                              </svg>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      {% for song in artist.songs.values() %}
+                      {% for billboard in song['billboard'].values() %}
+                      <div class="c27f49a483c85a5b88b3f37fb918e497-scss" style="height: 56px;">
+                        <div data-testid="top-sentinel" class="dd70b10e35107a612cc6c1a443a483d2-scss" style="height: 56px;">
+                          <div class="bddcb131e9b40fa874148a30368d83f8-scss" data-testid="tracklist-row-placeholder" style="height: calc(100% - 56px);">
+                            <div class="_918ff6c00e0a5647144abd99dcbd846d-scss _7c993111016a33a158645119f8a6fb12-scss a8dfb66bacdc192d63e516f45647f636-scss"></div>
+                            <div class="_918ff6c00e0a5647144abd99dcbd846d-scss _5845794624a406a62eb5b71d3d1c4d63-scss _39707f10edbf755486cbb3ddcdfc3772-scss"></div>
+                            <div class="_918ff6c00e0a5647144abd99dcbd846d-scss c6287512c50a737d01bd9db32b301fab-scss b4463666733c582e1c439e58006adeed-scss"></div>
+                            <div class="_918ff6c00e0a5647144abd99dcbd846d-scss c6287512c50a737d01bd9db32b301fab-scss b4463666733c582e1c439e58006adeed-scss"></div>
+                            <div class="_918ff6c00e0a5647144abd99dcbd846d-scss c6287512c50a737d01bd9db32b301fab-scss b4463666733c582e1c439e58006adeed-scss"></div>
+                            <div class="_918ff6c00e0a5647144abd99dcbd846d-scss c6287512c50a737d01bd9db32b301fab-scss b4463666733c582e1c439e58006adeed-scss"></div>
+                            <div class="_918ff6c00e0a5647144abd99dcbd846d-scss b9f411c6b990949776c8edf3daeb26ad-scss _833421671c5a3968845edf034d46968e-scss"></div>
+                          </div>
+                          <div style="height: 56px;"></div>
+                        </div>
+                        <div style="transform: translateY(0px);">
+                          <div  class = "inkblock" onclick="location.href='/song_show/{{song.id}}'" role="row" aria-rowindex="2" aria-selected="false">
+                            <div data-testid="tracklist-row" class="e8ea6a219247d88aa936a012f6227b0d-scss bddcb131e9b40fa874148a30368d83f8-scss" draggable="true">
+                              <div class="_7c993111016a33a158645119f8a6fb12-scss" role="gridcell" aria-colindex="1" tabindex="-1">
+                                <div class="_6b1ff8eab07810e2b7845ffe28430e38-scss"><span class="_99bbcff33ae810da0bfc335662ae2c1d-scss _8a9c5cc886805907de5073b8ebc3acd8-scss" as="span">{{billboard.position}}</span>
+                                  <button onclick="location.href='/year_show/{{billboard.year}}'" class="_38168f0d5f20e658506cd3e6204c1f9a-scss" aria-label="{{song.title}}" tabindex="-1">
+                                    <svg height="32" role="img" width="32" viewBox="0 0 24 24" class="_61eb6013554e346ba715319eaf489008-scss">
+                                       <img aria-hidden="false" draggable="false" loading="lazy" src="{{song.image}}" alt="{{song.image}}" class="_64acb0e26fe0d9dff68a0e9725b2a920-scss _4c838ef3d2b6da1a61669046bbfae3d1-scss" srcset="{{song.image}} 150w, {{song.image}} 300w, {{song.image}} 320w, {{song.image}} 640w" sizes="(min-width: 1280px) 232px, 192px">
+                                    </svg>
+                                  </button>
+                                </div>
+                              </div>
+                              <div class="_5845794624a406a62eb5b71d3d1c4d63-scss" role="gridcell" aria-colindex="2" tabindex="-1">
+                                <div class="_8ea0b892e971e6b90a252247c160b4f4-scss">
+                                  <div class="da0bc4060bb1bdb4abb8e402916af32e-scss standalone-ellipsis-one-line _8a9c5cc886805907de5073b8ebc3acd8-scss" dir="auto" as="div">{{song.title}}</div><span class="_966e29b71d2654743538480947a479b3-scss standalone-ellipsis-one-line f3fc214b257ae2f1d43d4c594a94497f-scss" as="span"></span></div>
+                              </div>
+                              <div class="b9f411c6b990949776c8edf3daeb26ad-scss" role="gridcell" aria-colindex="3" tabindex="-1">
+                                <button type="button" role="switch" aria-checked="false" class="_07bed3a434fa59aa1852a431bf2e19cb-scss d12d20a78fbc13787860287d10063d04-scss" title="Добавить в медиатеку" tabindex="-1">
+                                  <svg role="img" height="16" width="16" viewBox="0 0 16 16" class="Svg-ulyrgf-0 hJgLcF">
+                                    <path d="M13.764 2.727a4.057 4.057 0 00-5.488-.253.558.558 0 01-.31.112.531.531 0 01-.311-.112 4.054 4.054 0 00-5.487.253A4.05 4.05 0 00.974 5.61c0 1.089.424 2.113 1.168 2.855l4.462 5.223a1.791 1.791 0 002.726 0l4.435-5.195A4.052 4.052 0 0014.96 5.61a4.057 4.057 0 00-1.196-2.883zm-.722 5.098L8.58 13.048c-.307.36-.921.36-1.228 0L2.864 7.797a3.072 3.072 0 01-.905-2.187c0-.826.321-1.603.905-2.187a3.091 3.091 0 012.191-.913 3.05 3.05 0 011.957.709c.041.036.408.351.954.351.531 0 .906-.31.94-.34a3.075 3.075 0 014.161.192 3.1 3.1 0 01-.025 4.403z"></path>
+                                  </svg>
+                                </button>
+                                <div class="ec1b5762556429ac3aeedbae72433491-scss">{{billboard.year}}</div>
+                                <button type="button" aria-haspopup="menu" aria-label="Еще" class="_605821ce181f6de6632eabd6a46377fb-scss _50a94aaa6bd60a02583729be7f0e4f93-scss" title="Еще" tabindex="-1">
+                                  <svg role="img" height="16" width="16" viewBox="0 0 16 16" class="Svg-ulyrgf-0 hJgLcF">
+                                    <path d="M2 6.5a1.5 1.5 0 10-.001 2.999A1.5 1.5 0 002 6.5zm6 0a1.5 1.5 0 100 3 1.5 1.5 0 000-3zm6 0a1.5 1.5 0 10-.001 2.999A1.5 1.5 0 0014 6.5z"></path>
+                                  </svg>
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div data-testid="bottom-sentinel" class="_32062b37790303f01122c302fafcfa11-scss" style="height: 56px;">
+                          <div style="height: 56px;"></div>
+                          <div class="bddcb131e9b40fa874148a30368d83f8-scss" data-testid="tracklist-row-placeholder" style="height: calc(100% - 56px);">
+                            <div class="_918ff6c00e0a5647144abd99dcbd846d-scss _7c993111016a33a158645119f8a6fb12-scss a8dfb66bacdc192d63e516f45647f636-scss"></div>
+                            <div class="_918ff6c00e0a5647144abd99dcbd846d-scss _5845794624a406a62eb5b71d3d1c4d63-scss _39707f10edbf755486cbb3ddcdfc3772-scss"></div>
+                            <div class="_918ff6c00e0a5647144abd99dcbd846d-scss c6287512c50a737d01bd9db32b301fab-scss b4463666733c582e1c439e58006adeed-scss"></div>
+                            <div class="_918ff6c00e0a5647144abd99dcbd846d-scss c6287512c50a737d01bd9db32b301fab-scss b4463666733c582e1c439e58006adeed-scss"></div>
+                            <div class="_918ff6c00e0a5647144abd99dcbd846d-scss c6287512c50a737d01bd9db32b301fab-scss b4463666733c582e1c439e58006adeed-scss"></div>
+                            <div class="_918ff6c00e0a5647144abd99dcbd846d-scss c6287512c50a737d01bd9db32b301fab-scss b4463666733c582e1c439e58006adeed-scss"></div>
+                            <div class="_918ff6c00e0a5647144abd99dcbd846d-scss b9f411c6b990949776c8edf3daeb26ad-scss _833421671c5a3968845edf034d46968e-scss"></div>
+                          </div>
+                        </div>
+                      </div>
+                      {% endfor %}
+                      {% endfor %}
+                    </div>
+{% endblock %}
+
+{% block contentSpacing_tiles %}
+<div>BIO</div>
+<div>{{artist.bio}}</div>
+  <section class="e07b14d9bfcf8122b6b9b84eaebb6900-scss a8b052ab945f8d056679d7f3ff013e05-scss" aria-label="Years in billboards">
+                      <div class="_4e5e81e75ea1c55d3c6b7130e90b4e45-scss">
+                        <div class="_25ab18ebaa7323427b6a3ae748b2fdaa-scss">
+                          <div class="bd50070f7e4ffa804d8ad9fb0966c344-scss">
+                            <h2 class="c65f5ba184497ced74470e887c6a95c3-scss _15b259574e48922b106bc4b01521f33b-scss" as="h2">Years in billboards</h2></div>
+                        </div>
+                      </div>
+                      <div class="_5aac821edb25f0e281f50522021abbe4-scss _6424f268be3505ebab663700d60ebaa6-scss" style="--minimumColumnWidth:180px;grid-auto-rows:auto;">
+                        {% for year in artist.years_info.values() %}
+                        <div class="_3802c04052af0bb5d03956299250789e-scss inkblock" onclick="location.href='/year_show/{{year.year}}'">
+                          <div class="b82dc570be22e5eec06a207e5da869ad-scss" draggable="true">
+                            <div class="_248fa383b31a209d9309399e6dc75de1-scss">
+                              <div class="_2ce7a4a879bab3a4f4543c870c6d79fd-scss"><img aria-hidden="false" draggable="false" loading="lazy" src="{{year.image}}" data-testid="card-image" alt="" class="_64acb0e26fe0d9dff68a0e9725b2a920-scss _810778d3df9b3dbdff12618620765fdf-scss"></div>
+                              <div class="_3a2318b538bc2aae78113023036a879a-scss">
+                                <button class="_8e7d398e09c25b24232d92aac8a15a81-scss e8b2fe03d4e4726484b879ed8ff6f096-scss" title="GO" aria-label="GO" data-testid="play-button" style="--size:40px;">
+                                  <svg height="16" role="img" width="16" viewBox="0 0 24 24" aria-hidden="true">
+                                    <polygon points="21.57 12 5.98 3 5.98 21 21.57 12" fill="currentColor"></polygon>
+                                  </svg>
+                                </button>
+                              </div>
+                            </div>
+                            <div class="_8ffcbd2689adedee867afcf5090b6fd4-scss">
+                              <a draggable="false" title="{{year.year}}" class="f7ebc3d96230ee12a84a9b0b4b81bb8f-scss" dir="auto" href="/year_show/{{year.year}}">
+                                <div class="_45331a50e3963ecc26575a06f1fd5292-scss _3957b7dd066dbbba6a311b40a427c59f-scss" as="div">{{year.year}}</div>
+                              </a>
+                              <div class="_3cfbde1fd9fecaaa77935664eeb6e346-scss f3fc214b257ae2f1d43d4c594a94497f-scss" as="div">
+                                {{year.title}}
+                              </div>
+                              <div class="_3cfbde1fd9fecaaa77935664eeb6e346-scss f3fc214b257ae2f1d43d4c594a94497f-scss" as="div">
+                                <i>{{year.artists}}</i>
+                              </div>
+                            </div>
+                            <div class="_0f1a8f7fdd1d622cbfe4c283f4f5cd72-scss"></div>
+                          </div>
+                        </div>
+                        {% endfor %}
+                      </div>
+                    </section>
+                    {% if not artist.feats == {} %}
+                      <section class="e07b14d9bfcf8122b6b9b84eaebb6900-scss a8b052ab945f8d056679d7f3ff013e05-scss" aria-label="Featuring with.">
+                      <div class="_4e5e81e75ea1c55d3c6b7130e90b4e45-scss">
+                        <div class="_25ab18ebaa7323427b6a3ae748b2fdaa-scss">
+                          <div class="bd50070f7e4ffa804d8ad9fb0966c344-scss">
+                            <h2 class="c65f5ba184497ced74470e887c6a95c3-scss _15b259574e48922b106bc4b01521f33b-scss" as="h2">Featuring with.</h2></div>
+                        </div>
+                      </div>
+                      <div class="_5aac821edb25f0e281f50522021abbe4-scss _6424f268be3505ebab663700d60ebaa6-scss" style="--minimumColumnWidth:180px;grid-auto-rows:auto;">
+                        {% for artist_feat in artist.feats.values() %}
+                        <div class="_3802c04052af0bb5d03956299250789e-scss inkblock" onclick="location.href='/artist_show/{{artist_feat.id}}'">
+                          <div class="b82dc570be22e5eec06a207e5da869ad-scss" draggable="true">
+                            <div class="_248fa383b31a209d9309399e6dc75de1-scss">
+                              <div class="_2ce7a4a879bab3a4f4543c870c6d79fd-scss"><img aria-hidden="false" draggable="false" loading="lazy" src="{{artist_feat.image}}" data-testid="card-image" alt="" class="_64acb0e26fe0d9dff68a0e9725b2a920-scss _810778d3df9b3dbdff12618620765fdf-scss"></div>
+                              <div class="_3a2318b538bc2aae78113023036a879a-scss">
+                                <button class="_8e7d398e09c25b24232d92aac8a15a81-scss e8b2fe03d4e4726484b879ed8ff6f096-scss" title="GO" aria-label="GO" data-testid="play-button" style="--size:40px;">
+                                  <svg height="16" role="img" width="16" viewBox="0 0 24 24" aria-hidden="true">
+                                    <polygon points="21.57 12 5.98 3 5.98 21 21.57 12" fill="currentColor"></polygon>
+                                  </svg>
+                                </button>
+                              </div>
+                            </div>
+                            <div class="_8ffcbd2689adedee867afcf5090b6fd4-scss">
+                              <a draggable="false" title="{{artist_feat.name}}" class="f7ebc3d96230ee12a84a9b0b4b81bb8f-scss" dir="auto" href="/artist_show/{{artist_feat.id}}">
+                                <div class="_45331a50e3963ecc26575a06f1fd5292-scss _3957b7dd066dbbba6a311b40a427c59f-scss" as="div">{{artist_feat.name}}</div>
+                              </a>
+                            </div>
+                            <div class="_0f1a8f7fdd1d622cbfe4c283f4f5cd72-scss"></div>
+                          </div>
+                        </div>
+                        {% endfor %}
+                      </div>
+                    </section>
+                    {% endif %}
+                    <section class="e07b14d9bfcf8122b6b9b84eaebb6900-scss a8b052ab945f8d056679d7f3ff013e05-scss" aria-label="{{artist.name}} songs in billboard">
+                      <div class="_4e5e81e75ea1c55d3c6b7130e90b4e45-scss">
+                        <div class="_25ab18ebaa7323427b6a3ae748b2fdaa-scss">
+                          <div class="bd50070f7e4ffa804d8ad9fb0966c344-scss">
+                            <h2 class="c65f5ba184497ced74470e887c6a95c3-scss _15b259574e48922b106bc4b01521f33b-scss" as="h2">{{artist.name}} songs in billboard</h2></div>
+                        </div>
+                      </div>
+                      <div class="_5aac821edb25f0e281f50522021abbe4-scss _6424f268be3505ebab663700d60ebaa6-scss" style="--minimumColumnWidth:180px;grid-auto-rows:auto;">
+                        {% for song in artist.songs.values() %}
+                        <div class="_3802c04052af0bb5d03956299250789e-scss inkblock" onclick="location.href='/song_show/{{song.id}}';">
+                          <div class="b82dc570be22e5eec06a207e5da869ad-scss" draggable="true">
+                            <div class="_248fa383b31a209d9309399e6dc75de1-scss">
+                              <div class="_2ce7a4a879bab3a4f4543c870c6d79fd-scss"><img aria-hidden="false" draggable="false" loading="lazy" src="{{song.image}}" data-testid="card-image" alt="" class="_64acb0e26fe0d9dff68a0e9725b2a920-scss _810778d3df9b3dbdff12618620765fdf-scss"></div>
+                              <div class="_3a2318b538bc2aae78113023036a879a-scss">
+                                <button  class="_8e7d398e09c25b24232d92aac8a15a81-scss e8b2fe03d4e4726484b879ed8ff6f096-scss" title="GO" aria-label="GO" data-testid="play-button" style="--size:40px;">
+                                  <svg height="16" role="img" width="16" viewBox="0 0 24 24" aria-hidden="true">
+                                    <polygon points="21.57 12 5.98 3 5.98 21 21.57 12" fill="currentColor"></polygon>
+                                  </svg>
+                                </button>
+                              </div>
+                            </div>
+                            <div class="_8ffcbd2689adedee867afcf5090b6fd4-scss">
+                              <a draggable="false" title="{{song.title}}" class="f7ebc3d96230ee12a84a9b0b4b81bb8f-scss" dir="auto" href="/song_show/{{song.id}}">
+                                <div class="_45331a50e3963ecc26575a06f1fd5292-scss _3957b7dd066dbbba6a311b40a427c59f-scss" as="div">{{song.title}}</div>
+                              </a>
+
+                              <div class="_3cfbde1fd9fecaaa77935664eeb6e346-scss f3fc214b257ae2f1d43d4c594a94497f-scss" as="div">
+                                <time datetime="{{song.released}}">{{song.released}}</time>
+                              </div>
+                            </div>
+                            <div class="_0f1a8f7fdd1d622cbfe4c283f4f5cd72-scss"></div>
+                          </div>
+                        </div>
+                        {% endfor %}
+                      </div>
+                    </section>
+
+{% endblock %}

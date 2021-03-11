@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Main page</title>
+</head>
+<body>
+<h2>Messages</h2>
+<form method="post" action="/get_artist">
+    <label>
+        <input type="number" name="id">
+    </label>
+    <button type="submit">Get artist</button>
+</form>
+<h3>Artist list</h3>
+{% for artist in artists %}
+<div>{{ artist.name }}&nbsp;<i>{{artist.age}}</i>&nbsp;<img src="{{artist.image}}" alt=""></div>
+{% endfor %}
+</body>
+</html>

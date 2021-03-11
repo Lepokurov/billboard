@@ -1,0 +1,52 @@
+{% extends 'plural_info.html' %}
+{% block title_content %}
+      <h2 class="h1">{{title_page}}</h2>
+{% endblock %}
+
+{% block search %}
+ <div class="wrapper" style="width: 144px; margin-left: -72px">
+     <div class="block">
+      </form>
+            <form action = "/year_search" method = "post">
+           <p><input type = "search" name = "search" /></p>
+              <i class="fa fa-search">Search</i>
+      </form>
+       </div>
+
+</div>
+ {% endblock %}
+{% block body %}
+  <ul>
+              {% for year in years.values() %}
+
+            <li class="col-xs-12 col-sm-4 js-album-results-1" tabindex="0" data-sr-id="3" style="visibility: visible; opacity: 1; transition: opacity 0.5s cubic-bezier(0.5, 0, 0, 1) 0s;">
+
+
+
+              <figure onclick="location.href='/year_show/{{year.year}}';" data-tracking="{&quot;category&quot;: &quot;home&quot;, &quot;action&quot;: &quot;click-music&quot;}">
+
+                <div class="box">
+                  <div class="content">
+                    <img class="img-responsive" src="{{year.image}}" title="{{year.title}}" onclick="location.href='/year_show/{{year.year}}';" data-tracking="{&quot;category&quot;: &quot;home&quot;, &quot;action&quot;: &quot;click-music&quot;}">
+                  </div>
+                </div>
+
+                <div class="hidden-xs content-overlay" onclick="location.href='/year_show/{{year.year}}';" data-tracking="{&quot;category&quot;: &quot;home&quot;, &quot;action&quot;: &quot;click-music&quot;}"></div>
+
+                <div class="hidden-xs content-details">
+                  <figcaption class="album-play-button">
+                    <h1 class="text-white">{{year.year}}</h1>
+                    <h3 class="text-white">{{year.artists}} - {{year.title}}</h3>
+                    <h4 class="text-white">The best song of {{year.year}} </h4>
+
+
+                  </figcaption>
+
+                </div>
+              </figure>
+            </li>
+            {% endfor %}
+            <li class="col-xs-12 col-sm-4 js-album-results-2" tabindex="0" data-sr-id="5" style="visibility: visible; opacity: 1; transition: opacity 2s cubic-bezier(0.5, 0, 0, 1) 0s;">
+
+          </ul>
+{% endblock %}

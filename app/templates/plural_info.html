@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="album-results-free">
+        <div class="container">
+      <div class="row" style="color: #f3bb59;">
+          {% block title_content %}{% endblock %}
+    <p class="lead">Page is {{page}}/{{max_page}}</p>
+        {% if not previous_page == 0 %}
+    <a  class="btn btn-stroked-dark" role="button" href="{{previous_page}}" style="color: #f3b858; -webkit-box-shadow: 0 0 0 2px #ffc362 inset;     box-shadow: 0 0 0 2px #f3bb59 inset;">Back</a>
+        {% endif %}
+        {% if next_page <= max_page %}
+    <a  class="btn btn-stroked-dark" role="button" href="{{next_page}}" style="color: #f3b858; -webkit-box-shadow: 0 0 0 2px #ffc362 inset;     box-shadow: 0 0 0 2px #f3bb59 inset;">Next</a>
+        {% endif %}
+
+      </div>
+    <div class="row" style="height: 30px;">
+  {% block search %}{% endblock %}
+  </div>
+      <div class="row">
+        <a href="#mh-footer" class="showOnFocus">Skip to next section</a>
+        <div class="album-results">
+                   {% block body %}{% endblock %}
+        </div>
+      </div>
+  </div>
+ <div class="row" style="color: #f3bb59;">
+      <h2 class="h1">Songs</h2>
+    <p class="lead">Page is {{page}}/{{max_page}}</p>
+        {% if not previous_page == 0 %}
+    <a  class="btn btn-stroked-dark" role="button" href="{{previous_page}}" style="color: #f3b858; -webkit-box-shadow: 0 0 0 2px #ffc362 inset;     box-shadow: 0 0 0 2px #f3bb59 inset;">Back</a>
+        {% endif %}
+         {% if next_page <= max_page %}
+    <a  class="btn btn-stroked-dark" role="button" href="{{next_page}}" style="color: #f3b858; -webkit-box-shadow: 0 0 0 2px #ffc362 inset;     box-shadow: 0 0 0 2px #f3bb59 inset;">Next</a>
+        {% endif %}
+
+      </div>
+
+    </section>
+{% endblock %}

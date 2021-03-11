@@ -1,0 +1,87 @@
+{% extends 'plural_info.html' %}
+
+{% block title_content %}
+      <h2 class="h1">{{title_page}}</h2>
+{% endblock %}
+{% block search %}
+ <div class="wrapper">
+     <div class="block">
+      </form>
+            <form action = "/songs_by_title" method = "post">
+           <p><input type = "search" name = "title" /></p>
+              <i class="fa fa-search">Title</i>
+      </form>
+        </div>
+    <div class="block">
+       <form action = "/songs_by_artist" method = "post">
+           <p><input type = "search" name = "artist" /></p>
+              <i class="fa fa-search">Artist</i>
+       </form>
+    </div>
+      <div class="block">
+      <form action = "/songs_by_year" method = "post">
+        <input type = "search" name = "year" />
+            <i class="fa fa-search">Year</i>
+      </form>
+     </div>
+     <div class="block">
+       <form action = "/songs_by_genre" method = "post">
+           <p><input type = "search" name = "genre" /></p>
+              <i class="fa fa-search">Genre</i>
+      </form>
+     </div>
+     <div class="block">
+       <form action = "/songs_billboard_more_once" method = "post">
+          <p><input type="submit" value="Times"></p>
+              <i class="fa fa-search">Several</i>
+      </form>
+    </div>
+ </div>
+{% endblock %}
+{% block body %}
+
+<ul>
+              {% for song in songs.values() %}
+
+            <li class="col-xs-12 col-sm-4 js-album-results-1" tabindex="0" data-sr-id="3" style="visibility: visible; opacity: 1; transition: opacity 0.5s cubic-bezier(0.5, 0, 0, 1) 0s;">
+
+
+
+              <figure onclick="location.href='/song_show/{{song.id}}';" data-tracking="{&quot;category&quot;: &quot;home&quot;, &quot;action&quot;: &quot;click-music&quot;}">
+
+                <div class="box">
+                  <div class="content">
+                    <img class="img-responsive" src="{{song.image}}" title="{{song.title}}" onclick="location.href='/song_show/{{song.id}}';" data-tracking="{&quot;category&quot;: &quot;home&quot;, &quot;action&quot;: &quot;click-music&quot;}">
+                  </div>
+                </div>
+
+                <div class="hidden-xs content-overlay" onclick="location.href='/song_show/{{song.id}}';" data-tracking="{&quot;category&quot;: &quot;home&quot;, &quot;action&quot;: &quot;click-music&quot;}"></div>
+
+                <div class="hidden-xs content-details">
+                  <figcaption class="album-play-button">
+                    <h1 class="text-white">{{ song.title }}</h1>
+                    <h3 class="text-white">{{song.artists}}</h3>
+                    <h4 class="text-white">Album: {{song.album}}</h4>
+                    <h5 class="text-white">Year: {{song.year}}</h5>
+                    <h5 class="text-white">Position: {{song.position}}</h5>
+
+                  </figcaption>
+
+                </div>
+              </figure>
+
+              <figcaption class="scroll hidden-sm hidden-md hidden-lg">
+
+                <h2 onclick="location.href='https://open.spotify.com/album/3U75bXq9LhqZoaGoBCXikn';" data-tracking="{&quot;category&quot;: &quot;home&quot;, &quot;action&quot;: &quot;click-music&quot;}"></h2>
+                <h4 onclick="location.href='https://open.spotify.com/album/3U75bXq9LhqZoaGoBCXikn';" data-tracking="{&quot;category&quot;: &quot;home&quot;, &quot;action&quot;: &quot;click-music&quot;}"></h4>
+                <div id="segmented-play-now" class="btn btn-link" data-link="https://open.spotify.com/album/3U75bXq9LhqZoaGoBCXikn" role="button">
+                  <a href="https://open.spotify.com/album/3U75bXq9LhqZoaGoBCXikn" data-tracking="{&quot;category&quot;: &quot;home&quot;, &quot;action&quot;: &quot;click-music&quot;}" onclick="location.href=''"></a>
+                </div>
+
+              </figcaption>
+            </li>
+            {% endfor %}
+            <li class="col-xs-12 col-sm-4 js-album-results-2" tabindex="0" data-sr-id="5" style="visibility: visible; opacity: 1; transition: opacity 2s cubic-bezier(0.5, 0, 0, 1) 0s;">
+
+          </ul>
+{% endblock %}

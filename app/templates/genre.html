@@ -1,0 +1,224 @@
+{% extends 'single_info.html' %}
+
+{% block title %}<title>{{genre.name}}</title>{% endblock %}
+{% block style %}
+  <style type="text/css">
+.tooltip span{
+    border-radius: 5px 5px 5px 5px;
+    visibility: hidden;
+    position: absolute;
+    left: 400px;
+    background: #fff;
+    box-shadow: -2px 2px 10px -1px #333;
+    border-radius: 5px;
+}
+
+.tooltip:hover span{
+visibility: visible;
+}
+.tabs { width: 100%; padding: 0px; margin: 0 auto; }
+.tabs>input { display: none; }
+.tabs>div {
+    display: none;
+    padding: 12px;
+    #border: 1px solid #C0C0C0;
+    #background: #FFFFFF;
+}
+.tabs>label {
+    display: inline-block;
+    padding: 7px;
+    margin: 0 -5px -1px 0;
+    text-align: center;
+    #color: #666666;
+    #border: 1px solid #C0C0C0;
+    #background: #e0e0e0;
+    cursor: pointer;
+}
+.tabs>input:checked + label {
+    color: #000000;
+    #border: 1px solid #000000;
+    #border-bottom: 1px solid #000000;
+    #background: #000000;
+}
+#tab_1:checked ~ #txt_1,
+#tab_2:checked ~ #txt_2,
+#tab_3:checked ~ #txt_3,
+#tab_4:checked ~ #txt_4 { display: block; }
+</style>
+{% endblock %}
+{% block banner_image %}
+<div class="_1066d722d4c5fe45076daa358de0a969-scss banner_image-blurred_image" style="background-image: url({{genre.image}});"></div>
+{% endblock %}
+
+{% block info %}
+ <span class="f6a6c11d18da1af699a0464367e2189a-scss">{{genre.count.songs}} songs</span><span class="f6a6c11d18da1af699a0464367e2189a-scss"><span class="_0462465b64c9df5f31f2601f892b57d3-scss">{{genre.count.artists}} artists</span></span>
+{% endblock %}
+
+{% block main_image %}
+  <div class="e606f708ec76d36e4cf363817b6b2ffd-scss" draggable="true"><img aria-hidden="false" draggable="false" loading="lazy" src="{{genre.image}}" alt="{{genre.image}}" class="_64acb0e26fe0d9dff68a0e9725b2a920-scss _4c838ef3d2b6da1a61669046bbfae3d1-scss" srcset="{{genre.image}} 150w, {{genre.image}} 300w, {{genre.image}} 320w, {{genre.image}} 640w" sizes="(min-width: 1280px) 232px, 192px"></div>
+{% endblock %}
+{% block text_image %}
+  <span dir="auto" class="dc48565bba15548872ea84c715a5fee2-scss"><h1 class="a12b67e576d73f97c44f1f37026223c4-scss" as="h1" style="padding: 0.08em 0px; font-size: 48px; line-height: 48px; visibility: visible;">{{genre.name}}</h1></span>
+{% endblock %}
+
+{% block wiki %}
+  <img onclick="location.href=''" aria-hidden="false" draggable="false" loading="lazy" src="https://cdn.pixabay.com/photo/2017/08/05/11/19/logo-2582755_1280.png" alt="{{genre.name}}" class="_64acb0e26fe0d9dff68a0e9725b2a920-scss _4c838ef3d2b6da1a61669046bbfae3d1-scss inkblock" style="-webkit-box-shadow: 0 0 0 rgba(0,0,0,.5);" srcset="https://cdn.pixabay.com/photo/2017/08/05/11/19/logo-2582755_1280.png 150w, https://cdn.pixabay.com/photo/2017/08/05/11/19/logo-2582755_1280.png 300w, https://cdn.pixabay.com/photo/2017/08/05/11/19/logo-2582755_1280.png 320w, https://cdn.pixabay.com/photo/2017/08/05/11/19/logo-2582755_1280.png 640w" sizes="(min-width: 1280px) 232px, 192px">
+{% endblock %}
+
+{% block contentSpacing_tiles %}
+  <div role="grid" aria-rowcount="2" aria-colcount="3" aria-label="{{genre.name}}" class="_7effa9d9b3900e9698aa6e0423a1e841-scss _98a17d59ea3df3c60b9699a6afe43816-scss tabs" tabindex="0" data-testid="track-list">
+      <input type="radio" name="inset" value="" id="tab_1" checked>
+      <label for="tab_1">
+        <div class="_2dc8cce76d72af90f5e00e781db42541-scss">
+          <div class="_3a60fe1505c09248ad7c72d04a0cf07f-scss bddcb131e9b40fa874148a30368d83f8-scss" role="row" aria-rowindex="2" style="grid-template-columns: [index] 1px [first] 4fr [last] minmax(25px,1fr);">
+            <div class="_7c993111016a33a158645119f8a6fb12-scss" role="columnheader" aria-colindex="1" aria-sort="none" tabindex="-1">#</div>
+            <div class="_5845794624a406a62eb5b71d3d1c4d63-scss" role="columnheader" aria-colindex="2" aria-sort="none" tabindex="1">
+              <span class="standalone-ellipsis-one-line _61f284de1c56917f93c55a3ae121ba1c-scss" as="span"><i>Years</i></span>
+            </div>
+          </div>
+        </div>
+      </label>
+
+      <input type="radio" name="inset" value="" id="tab_2">
+      <label for="tab_2">
+        <div class="_2dc8cce76d72af90f5e00e781db42541-scss">
+          <div class="_3a60fe1505c09248ad7c72d04a0cf07f-scss bddcb131e9b40fa874148a30368d83f8-scss" role="row" aria-rowindex="1" style="grid-template-columns: [index] 1px [first] 4fr [last] minmax(20px,1fr);">
+            <div class="_7c993111016a33a158645119f8a6fb12-scss" role="columnheader" aria-colindex="1" aria-sort="none" tabindex="-1">#</div>
+            <div class="_5845794624a406a62eb5b71d3d1c4d63-scss" role="columnheader" aria-colindex="2" aria-sort="none" tabindex="-1">
+              <span class="standalone-ellipsis-one-line _61f284de1c56917f93c55a3ae121ba1c-scss" as="span">Artists</span>
+            </div>
+          </div>
+        </div>
+      </label>
+
+      <input type="radio" name="inset" value="" id="tab_3">
+      <label for="tab_3">
+        <div class="_2dc8cce76d72af90f5e00e781db42541-scss">
+          <div class="_3a60fe1505c09248ad7c72d04a0cf07f-scss bddcb131e9b40fa874148a30368d83f8-scss" role="row" aria-rowindex="1" style="grid-template-columns: [index] 1px [first] 4fr [last] minmax(25px,1fr);">
+            <div class="_7c993111016a33a158645119f8a6fb12-scss" role="columnheader" aria-colindex="1" aria-sort="none" tabindex="-1">#</div>
+            <div class="_5845794624a406a62eb5b71d3d1c4d63-scss" role="columnheader" aria-colindex="2" aria-sort="none" tabindex="-1">
+              <span class="standalone-ellipsis-one-line _61f284de1c56917f93c55a3ae121ba1c-scss" as="span">Songs</span>
+            </div>
+          </div>
+        </div>
+      </label>
+
+  <div id="txt_1">
+  <section class="e07b14d9bfcf8122b6b9b84eaebb6900-scss a8b052ab945f8d056679d7f3ff013e05-scss" aria-label="Years">
+    <div class="_4e5e81e75ea1c55d3c6b7130e90b4e45-scss">
+      <div class="_25ab18ebaa7323427b6a3ae748b2fdaa-scss">
+        <div class="bd50070f7e4ffa804d8ad9fb0966c344-scss">
+          <h2 class="c65f5ba184497ced74470e887c6a95c3-scss _15b259574e48922b106bc4b01521f33b-scss" as="h2">Years</h2></div>
+      </div>
+    </div>
+    <div class="_5aac821edb25f0e281f50522021abbe4-scss _6424f268be3505ebab663700d60ebaa6-scss" style="--minimumColumnWidth:180px;grid-auto-rows:auto;">
+      {% for year in genre.years.values() %}
+      <div class="_3802c04052af0bb5d03956299250789e-scss inkblock" onclick="location.href='/year_show/{{year.year}}'">
+        <div class="b82dc570be22e5eec06a207e5da869ad-scss" draggable="true">
+          <div class="_248fa383b31a209d9309399e6dc75de1-scss">
+            <div class="_2ce7a4a879bab3a4f4543c870c6d79fd-scss"><img aria-hidden="false" draggable="false" loading="lazy" src="{{year.image}}" data-testid="card-image" alt="" class="_64acb0e26fe0d9dff68a0e9725b2a920-scss _810778d3df9b3dbdff12618620765fdf-scss"></div>
+            <div class="_3a2318b538bc2aae78113023036a879a-scss">
+              <button class="_8e7d398e09c25b24232d92aac8a15a81-scss e8b2fe03d4e4726484b879ed8ff6f096-scss" title="GO" aria-label="GO" data-testid="play-button" style="--size:40px;">
+                <svg height="16" role="img" width="16" viewBox="0 0 24 24" aria-hidden="true">
+                  <polygon points="21.57 12 5.98 3 5.98 21 21.57 12" fill="currentColor"></polygon>
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="_8ffcbd2689adedee867afcf5090b6fd4-scss">
+            <a draggable="false" title="{{year.year}}" class="f7ebc3d96230ee12a84a9b0b4b81bb8f-scss" dir="auto" href="/year_show/{{year.year}}">
+              <div class="_45331a50e3963ecc26575a06f1fd5292-scss _3957b7dd066dbbba6a311b40a427c59f-scss" as="div">{{year.year}}</div>
+            </a>
+            <div class="_3cfbde1fd9fecaaa77935664eeb6e346-scss f3fc214b257ae2f1d43d4c594a94497f-scss" as="div">
+              {{year.title}} -
+            </div>
+            <div class="_3cfbde1fd9fecaaa77935664eeb6e346-scss f3fc214b257ae2f1d43d4c594a94497f-scss" as="div">
+              <i>{{year.artists}}</i>
+            </div>
+            <div class="_3cfbde1fd9fecaaa77935664eeb6e346-scss f3fc214b257ae2f1d43d4c594a94497f-scss" as="div">
+              <strong>{{year.count}} songs</strong>
+            </div>
+          </div>
+          <div class="_0f1a8f7fdd1d622cbfe4c283f4f5cd72-scss"></div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+  </div>
+  <div id="txt_2">
+  {% if not genre.artists == {} %}
+  <section class="e07b14d9bfcf8122b6b9b84eaebb6900-scss a8b052ab945f8d056679d7f3ff013e05-scss" aria-label="{{genre.name}} artists">
+    <div class="_4e5e81e75ea1c55d3c6b7130e90b4e45-scss">
+      <div class="_25ab18ebaa7323427b6a3ae748b2fdaa-scss">
+        <div class="bd50070f7e4ffa804d8ad9fb0966c344-scss">
+          <h2 class="c65f5ba184497ced74470e887c6a95c3-scss _15b259574e48922b106bc4b01521f33b-scss" as="h2">{{genre.name}} artists</h2></div>
+      </div>
+    </div>
+    <div class="_5aac821edb25f0e281f50522021abbe4-scss _6424f268be3505ebab663700d60ebaa6-scss" style="--minimumColumnWidth:180px;grid-auto-rows:auto;">
+      {% for artist in genre.artists.values() %}
+      <div class="_3802c04052af0bb5d03956299250789e-scss inkblock" onclick="location.href='/artist_show/{{artist.id}}'">
+        <div class="b82dc570be22e5eec06a207e5da869ad-scss" draggable="true">
+          <div class="_248fa383b31a209d9309399e6dc75de1-scss">
+            <div class="_2ce7a4a879bab3a4f4543c870c6d79fd-scss"><img aria-hidden="false" draggable="false" loading="lazy" src="{{artist.image}}" data-testid="card-image" alt="" class="_64acb0e26fe0d9dff68a0e9725b2a920-scss _810778d3df9b3dbdff12618620765fdf-scss"></div>
+            <div class="_3a2318b538bc2aae78113023036a879a-scss">
+              <button class="_8e7d398e09c25b24232d92aac8a15a81-scss e8b2fe03d4e4726484b879ed8ff6f096-scss" title="GO" aria-label="GO" data-testid="play-button" style="--size:40px;">
+                <svg height="16" role="img" width="16" viewBox="0 0 24 24" aria-hidden="true">
+                  <polygon points="21.57 12 5.98 3 5.98 21 21.57 12" fill="currentColor"></polygon>
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="_8ffcbd2689adedee867afcf5090b6fd4-scss">
+            <a draggable="false" title="{{artist.name}}" class="f7ebc3d96230ee12a84a9b0b4b81bb8f-scss" dir="auto" href="/artist_show/{{artist.id}}">
+              <div class="_45331a50e3963ecc26575a06f1fd5292-scss _3957b7dd066dbbba6a311b40a427c59f-scss" as="div">{{artist.name}}</div>
+            </a>
+          </div>
+          <div class="_0f1a8f7fdd1d622cbfe4c283f4f5cd72-scss"></div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+  </div>
+  <div id="txt_3">
+  <section class="e07b14d9bfcf8122b6b9b84eaebb6900-scss a8b052ab945f8d056679d7f3ff013e05-scss" aria-label="{{genre.name}} songs">
+    <div class="_4e5e81e75ea1c55d3c6b7130e90b4e45-scss">
+      <div class="_25ab18ebaa7323427b6a3ae748b2fdaa-scss">
+        <div class="bd50070f7e4ffa804d8ad9fb0966c344-scss">
+          <h2 class="c65f5ba184497ced74470e887c6a95c3-scss _15b259574e48922b106bc4b01521f33b-scss" as="h2">{{genre.name}} songs</h2></div>
+      </div>
+    </div>
+    <div class="_5aac821edb25f0e281f50522021abbe4-scss _6424f268be3505ebab663700d60ebaa6-scss" style="--minimumColumnWidth:180px;grid-auto-rows:auto;">
+      {% for song in genre.songs.values() %}
+      <div class="_3802c04052af0bb5d03956299250789e-scss inkblock" onclick="location.href='/song_show/{{song.id}}';">
+        <div class="b82dc570be22e5eec06a207e5da869ad-scss" draggable="true">
+          <div class="_248fa383b31a209d9309399e6dc75de1-scss">
+            <div class="_2ce7a4a879bab3a4f4543c870c6d79fd-scss"><img aria-hidden="false" draggable="false" loading="lazy" src="{{song.image}}" data-testid="card-image" alt="" class="_64acb0e26fe0d9dff68a0e9725b2a920-scss _810778d3df9b3dbdff12618620765fdf-scss"></div>
+            <div class="_3a2318b538bc2aae78113023036a879a-scss">
+              <button class="_8e7d398e09c25b24232d92aac8a15a81-scss e8b2fe03d4e4726484b879ed8ff6f096-scss" title="GO" aria-label="GO" data-testid="play-button" style="--size:40px;">
+                <svg height="16" role="img" width="16" viewBox="0 0 24 24" aria-hidden="true">
+                  <polygon points="21.57 12 5.98 3 5.98 21 21.57 12" fill="currentColor"></polygon>
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="_8ffcbd2689adedee867afcf5090b6fd4-scss">
+            <a draggable="false" title="{{song.title}}" class="f7ebc3d96230ee12a84a9b0b4b81bb8f-scss" dir="auto" href="/song_show/{{song.id}}">
+              <div class="_45331a50e3963ecc26575a06f1fd5292-scss _3957b7dd066dbbba6a311b40a427c59f-scss" as="div">{{song.title}}</div>
+            </a>
+
+            <div class="_3cfbde1fd9fecaaa77935664eeb6e346-scss f3fc214b257ae2f1d43d4c594a94497f-scss" as="div">
+              <time datetime="{{song.released}}">{{song.released}}</time>
+            </div>
+          </div>
+          <div class="_0f1a8f7fdd1d622cbfe4c283f4f5cd72-scss"></div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+  </div>
+ </div>
+{% endblock %}

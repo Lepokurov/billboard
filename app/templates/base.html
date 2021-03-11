@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="no-focus-outline spotify__os--is-windows spotify__container--is-web" style="--nav-bar-width:232px;">
+
+<head>
+  <meta charset="utf-8">
+  <title>Billboard</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/indexSegmented-fdea0dcec5.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/landingpage-822106e371.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/masthead-f881c209b6.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/spotify-a994b4bc1c.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles__ltr.css') }}">
+</head>
+<body>
+  <style type="text/css">
+ .btn-stroked-dark:hover, .btn-secondary:hover, .btn-secondary-img:hover, .btn-tertiary:hover, .btn-default:hover {
+    background-color: #1db954;
+}
+    form{
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    transition: all 1s;
+    width: 50px;
+    height: 50px;
+    background: white;
+    box-sizing: border-box;
+    border-radius: 25px;
+    border: 4px solid white;
+    padding: 5px;
+}
+
+input{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;;
+    height: 42.5px;
+    line-height: 30px;
+    outline: 0;
+    border: 0;
+    display: none;
+    font-size: 1em;
+    border-radius: 20px;
+    padding: 0 20px;
+  background-color: #f2b155;
+}
+
+
+.fa{
+    box-sizing: border-box;
+    padding: 5px;
+    #width: 42.5px;
+    height: 42.5px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 50%;
+    color: #f3b356;
+    text-align: center;
+    font-size: 1.2em;
+    transition: all 1s;
+}
+
+form:hover{
+    width: 200px;
+    cursor: pointer;
+}
+
+form:hover input{
+    display: block;
+}
+
+form:hover .fa{
+    color: white;
+}
+    div.wrapper {
+width: 720px;
+position: absolute;
+left: 50%;
+margin-left: -360px;
+}
+div.block {
+float:left;
+width:144px;
+}
+  </style>
+  <div class="index-segmented-body">
+    <section>
+      <div class="hero-main" style="max-height: 120px">
+        <div class="hero-home-gradient">
+          <div class=" hero-home-bg">
+
+            <div class="text-white text-center">
+
+              <div class="col-xs-12 col-md-10 col-md-offset-1">
+                <h2><a href="/songs_default" class="btn btn-green btn-lg" style=" margin-top: 1px;">
+                  Song
+                </a>
+                <a href="/artists_default" class="btn btn-green btn-lg" style="margin-top: 1px;">
+                  Artist
+                </a>
+                <a href="/year_default" class="btn btn-green btn-lg" style="margin-top: 1px;">
+                  Year
+                </a>
+                <a href="/genres_default" class="btn btn-green btn-lg" style="margin-top: 1px;">
+                  Genre
+                </a></h2>
+
+              </div>
+            </div>
+            <div class="if-legal" style="bottom: 1px;">
+              <p class="small">
+                * <a href="/us/legal/end-user-agreement/">This is spotify</a> css. I used this, because i no have time and skill to do my own css.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+   {% block content %}{% endblock %}
+
+  </div>
+
+</body>
+
+</html>

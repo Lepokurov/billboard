@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="album-results-free">
+<div class="container">
+
+  <div class="row" style="color: #f3bb59;">
+    <h2 class="h1">52 random songs that were in the billboard</h2>
+    <p class="lead">Choose one to view all info about trek.</p>
+    <a id="segmented-desktop-launch" class="btn btn-stroked-dark" role="button" href="https://open.spotify.com/browse" style="color: #f3b858; -webkit-box-shadow: 0 0 0 2px #ffc362 inset;     box-shadow: 0 0 0 2px #f3bb59 inset;">HZ</a>
+
+  </div>
+  <div class="row">
+    <a href="#mh-footer" class="showOnFocus">Skip to next section</a>
+    <div class="album-results">
+      <ul>
+        {% for song in songs.values() %}
+
+        <li class="col-xs-12 col-sm-4 js-album-results-1" tabindex="0" data-sr-id="3" style="visibility: visible; opacity: 1; transition: opacity 0.5s cubic-bezier(0.5, 0, 0, 1) 0s;">
+
+          <figure onclick="location.href='/song_show/{{song.id}}';" data-tracking="{&quot;category&quot;: &quot;home&quot;, &quot;action&quot;: &quot;click-music&quot;}">
+
+            <div class="box">
+              <div class="content">
+                <img class="img-responsive" src="{{song.image}}" title="{{song.title}}" onclick="location.href='/song_show/{{song.id}}';" data-tracking="{&quot;category&quot;: &quot;home&quot;, &quot;action&quot;: &quot;click-music&quot;}">
+              </div>
+            </div>
+
+            <div class="hidden-xs content-overlay" onclick="location.href='/song_show/{{song.id}}';" data-tracking="{&quot;category&quot;: &quot;home&quot;, &quot;action&quot;: &quot;click-music&quot;}"></div>
+
+            <div class="hidden-xs content-details">
+              <figcaption class="album-play-button">
+                <h1 class="text-white">{{ song.title}}</h1>
+                <h3 class="text-white">{{song.artists}}</h3>
+                <h4 class="text-white">Album: {{song.album}}</h4>
+                <h5 class="text-white">Year: {{song.year}}</h5>
+                <h5 class="text-white">Position: {{song.position}}</h5>
+
+              </figcaption>
+
+            </div>
+          </figure>
+
+        </li>
+        {% endfor %}
+        <li class="col-xs-12 col-sm-4 js-album-results-2" tabindex="0" data-sr-id="5" style="visibility: visible; opacity: 1; transition: opacity 2s cubic-bezier(0.5, 0, 0, 1) 0s;">
+      </ul>
+    </div>
+  </div>
+</div>
+</section>
+{% endblock %}

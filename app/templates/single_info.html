@@ -1,0 +1,138 @@
+<html lang="en" dir="ltr" class="no-focus-outline spotify__os--is-windows spotify__container--is-web" style="--nav-bar-width:232px;">
+
+<head>
+  <meta charset="UTF-8">
+   {% block title %}{% endblock %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/web-player.d1458de0.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/6732606464b.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/xpui-routes-album.4e5e4b09.css') }}">
+    {% block style %}{% endblock %}
+
+</head>
+<style id="stylish-3" class="stylish" type="text/css">
+
+</style>
+<style id="stylish-4" class="stylish" type="text/css">
+  @namespace url(http://www.w3.org/1999/xhtml);
+.banner_image-blurred_image{
+    background-repeat: no-repeat;
+    -webkit-filter: blur(2px);
+    background-position: center;
+    background-size: 100% ;
+    filter: blur(10px);
+    z-index: -1;
+    position: absolute;
+    overflow: hidden;
+    right: -1rem;
+    bottom: -1rem;
+    left: -1rem;
+}
+</style>
+   <div class="col-xs-12 col-md-10 col-md-offset-1">
+                <h2><a href="/songs_default" class="btn btn-green btn-lg" style=" margin-top: 1px;">
+                  Song
+                </a>
+                <a href="/artists_default" class="btn btn-green btn-lg" style="margin-top: 1px;">
+                  Artist
+                </a>
+                <a href="/year_default" class="btn btn-green btn-lg" style="margin-top: 1px;">
+                  Year
+                </a>
+                <a href="/genres_default" class="btn btn-green btn-lg" style="margin-top: 1px;">
+                  Genre
+                </a></h2>
+
+              </div>
+{% if False %}
+<div data-tippy-root="" id="tippy-1" style="z-index: 9999; margin: 0px; position: absolute; inset: auto auto 0px 0px; transform: translate(422px, -249px);">
+  <div id="context-menu-root">
+    <ul tabindex="0" role="menu" data-depth="0" class="_8bfd0bd3ba9dd8201e38b1622bc74fb6-scss">
+      <li role="presentation" class="b46bba08e80cdd2d0da8cca1e49c7440-scss">
+        <button role="menuitem" class="d2a8e42f26357f2d21c027f30d93fb64-scss" tabindex="-1"><span class="ellipsis-one-line f3fc214b257ae2f1d43d4c594a94497f-scss" as="span" dir="auto">Добавить в очередь</span></button>
+      </li>
+      <li role="presentation" class="b46bba08e80cdd2d0da8cca1e49c7440-scss">
+        <button role="menuitem" class="d2a8e42f26357f2d21c027f30d93fb64-scss d8298bd279d997e25cc981a71a6f28bf-scss" aria-disabled="false" tabindex="-1"><span class="ellipsis-one-line f3fc214b257ae2f1d43d4c594a94497f-scss" as="span" dir="auto">К радио по исполнителю</span></button>
+      </li>
+      <li role="presentation" class="b46bba08e80cdd2d0da8cca1e49c7440-scss">
+        <button role="menuitem" class="d2a8e42f26357f2d21c027f30d93fb64-scss" aria-disabled="false" tabindex="-1"><span class="ellipsis-one-line f3fc214b257ae2f1d43d4c594a94497f-scss" as="span" dir="auto">Добавить в медиатеку</span></button>
+      </li>
+      <li role="presentation" class="b46bba08e80cdd2d0da8cca1e49c7440-scss">
+        <button role="menuitem" class="d2a8e42f26357f2d21c027f30d93fb64-scss" aria-expanded="false" tabindex="-1"><span class="ellipsis-one-line f3fc214b257ae2f1d43d4c594a94497f-scss" as="span" dir="auto">Добавить в плейлист</span><span><svg role="img" height="16" width="16" class="Svg-ulyrgf-0 hJgLcF _166adb933fd91e65d2d8baf00dfd2d8c-scss" viewBox="0 0 16 16"><path d="M13 10L8 4.206 3 10z"></path></svg></span></button>
+      </li>
+      <li role="presentation" class="b46bba08e80cdd2d0da8cca1e49c7440-scss">
+        <button role="menuitem" class="d2a8e42f26357f2d21c027f30d93fb64-scss fb00f6b429135ef3e5a3a5289d39246c-scss" aria-expanded="false" tabindex="-1"><span class="ellipsis-one-line f3fc214b257ae2f1d43d4c594a94497f-scss" as="span" dir="auto">Поделиться</span><span><svg role="img" height="16" width="16" class="Svg-ulyrgf-0 hJgLcF _166adb933fd91e65d2d8baf00dfd2d8c-scss" viewBox="0 0 16 16"><path d="M13 10L8 4.206 3 10z"></path></svg></span></button>
+      </li>
+      <li role="presentation" class="b46bba08e80cdd2d0da8cca1e49c7440-scss">
+        <button role="menuitem" class="d2a8e42f26357f2d21c027f30d93fb64-scss fb00f6b429135ef3e5a3a5289d39246c-scss" tabindex="-1"><span class="ellipsis-one-line f3fc214b257ae2f1d43d4c594a94497f-scss" as="span" dir="auto">Открыть в приложении для компьютера</span></button>
+      </li>
+    </ul>
+  </div>
+</div>
+{% endif %}
+<div class="Root__top-container">
+  <div class="Root__main-view">
+    <div></div>
+    <main class="main-view-container">
+      <div class="under-main-view"></div>
+      <div class="os-host os-host-foreign os-theme-spotify os-host-overflow os-host-overflow-y os-host-resize-disabled os-host-scrollbar-horizontal-hidden main-view-container__scroll-node os-host-transition">
+        <div class="os-resize-observer-host observed">
+          <div class="os-resize-observer" style="left: 0px; right: auto;"></div>
+        </div>
+        <div class="os-padding">
+          <div class="os-viewport os-viewport-native-scrollbars-invisible" style="overflow-y: scroll;">
+            <div class="os-content" style="padding: 0px; height: 100%; width: 100%;">
+              <div class="main-view-container__scroll-node-child-spacer"></div>
+              <div class="main-view-container__scroll-node-child">
+                  <section class="_7e0ce830f3504054d8b73c0fd1ddc1d5-scss">
+                 <div class="_4c3b6e4e88112fc8ef88512cbe7521ed-scss da51a6e223c7200d373a2fd0614d7c33-scss">
+                    {% block banner_image %}{% endblock %}
+                    <div class="_1066d722d4c5fe45076daa358de0a969-scss _898a0ac18270b333d95d8402650e2c46-scss"></div>
+                    <div></div>
+                    {% block main_image %}{% endblock %}
+                    <div class="faffb409617fd7cf35017fde898cf860-scss">
+                        {% block text_image %}{% endblock %}
+                      <div class="aa7a8f31f242c15e7de49ff9c08edebb-scss">
+                       {% block info %}{% endblock %}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="_59ed5f1313c7c4b211995d2b6463683f-scss" style="background-color: rgb(224, 216, 216);"></div>
+                  <div class="f39dd6caa689537bffdfc875c3f33d08-scss contentSpacing">
+                    <div class="_95e9f2bdf9c64702a6123c2d6de8076b-scss" data-testid="action-bar-row">
+                      <button class="_8e7d398e09c25b24232d92aac8a15a81-scss e8b2fe03d4e4726484b879ed8ff6f096-scss" title="wiki" aria-label="wiki" data-testid="play-button" style="--size:56px;">
+                        <svg height="28" role="img" width="28" viewBox="0 0 24 24" aria-hidden="true">
+                          {% block wiki %}{% endblock %}
+                        </svg>
+                      </button>
+                         {% block youtube %}{% endblock %}
+                   </div>
+                  </div>
+                  <div class="contentSpacing">
+                    {% block contentSpacing_table %}{% endblock %}
+                  </div>
+                   <div class="contentSpacing">
+                    {% block contentSpacing_tiles %}{% endblock %}
+                  </div>
+                    </section>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="os-scrollbar os-scrollbar-horizontal os-scrollbar-unusable">
+          <div class="os-scrollbar-track">
+            <div class="os-scrollbar-handle" style="width: 100%; transform: translate(0px, 0px);"></div>
+          </div>
+        </div>
+        <div class="os-scrollbar os-scrollbar-vertical">
+          <div class="os-scrollbar-track">
+            <div class="os-scrollbar-handle" style="height: 52.2346%; transform: translate(0px, 0px);"></div>
+          </div>
+        </div>
+        <div class="os-scrollbar-corner"></div>
+      </div>
+    </main>
+    <div class="_9018961d6e6c1fe417dbb72d6d24061c-scss"></div>
+    <div class="Root__modal-slot"></div>
+  </div>
+  </div>
+</html>
