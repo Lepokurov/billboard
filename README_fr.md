@@ -42,3 +42,6 @@ Le programme a 4 sélections principales :
     2. Page solo année :
        1. Il contient les années avec le nombre de chansons du genre actuel, la chanson et les artistes du genre actuel.
   
+  
+  
+  Я прикалываюсь, я просто перевел это с англ на французкий.
