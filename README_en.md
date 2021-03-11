@@ -7,11 +7,11 @@ This program show the main information about songs, artists, genres, years and t
 The program have 4 main selection:
 
 1. **Year** - It's having the page with list of years and the solo page of year.
-          1. Page with list of years:
-      1.It contains the all years of billboard (1946 - 2020). 
-      2.It have a search by year.
+    1. Page with list of years:
+          1.It contains the all years of billboard (1946 - 2020). 
+          2.It have a search by year.
     2. Solo page year:
-      1. It contains the songs, the artists and genres with count of a songs of the current year.
+          1. It contains the songs, the artists and genres with count of a songs of the current year.
   
 2. **Song** - It's having the page with list of songs and the solo page of song.
   Page with list of songs:
