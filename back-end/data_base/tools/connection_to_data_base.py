@@ -35,3 +35,12 @@ def get_data_from_db(sql_request) -> tuple:
     return sql_data
 
 
+def get_count(sql_request) -> int:
+    """
+    getting count rows by request
+    :param sql_request: request
+    :return: count
+    """
+    sql_data = get_data_from_db(sql_request)
+
+    return sql_data[0][0]

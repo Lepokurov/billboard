@@ -1,5 +1,19 @@
 
-def get_columns(count: bool) -> str:
+def sql_request_songs_list() -> str:
+    """
+    Request for list songs
+    :return: The request that included the columns and tables for necessary information about songs
+    """
+    sql_request = """SELECT song.id_song, song.title_song, song.album_song, song.image_song, artist.name_artist,
+    billboard.year, billboard.position
+    FROM song
+      LEFT JOIN song_performers ON (song_performers.id_song = song.id_song) 
+        LEFT JOIN artist ON (song_performers.id_artist = artist.id_artist)
+          LEFT JOIN billboard ON (billboard.id_song = song.id_song)"""
+    return sql_request
+
+
+def __get_columns(count: bool) -> str:
     """
     getting columns: ids or count rows
     :param count: if need count then changed request
@@ -12,41 +26,27 @@ def get_columns(count: bool) -> str:
     return columns
 
 
-def sql_request_songs_list() -> str:
-    """
-    Request for list songs
-    :return: The request included the columns and tables for necessary information about songs
-    """
-    sql_request = """SELECT song.id_song, song.title_song, song.album_song, song.image_song, artist.name_artist,
-    billboard.year, billboard.position
-    FROM song
-      LEFT JOIN song_performers ON (song_performers.id_song = song.id_song) 
-        LEFT JOIN artist ON (song_performers.id_artist = artist.id_artist)
-          LEFT JOIN billboard ON (billboard.id_song = song.id_song)"""
-    return sql_request
-
-
 def sql_request_songs_by_title(title: str, count=False) -> str:
     """
-    Request for getting ids of songs by title
+    Request to get ids of songs by title
     :param title: title of songs
     :param count: if need count then changed request
     :return: str request
     """
 
-    sql_request = "SELECT "+get_columns(count)+" FROM song "
+    sql_request = "SELECT " + __get_columns(count) + " FROM song "
     sql_request += "WHERE POSITION('" + title + "' in LOWER(title_song))>0"
     return sql_request
 
 
 def sql_request_songs_by_genre(genre: str, count=False) -> str:
     """
-    Request for getting ids of songs by genre song
+    Request to get ids of songs by genre song
     :param genre: name of genre
     :param count: if need count then changed request
     :return: str request
     """
-    sql_request = 'SELECT' + get_columns(count)
+    sql_request = 'SELECT' + __get_columns(count)
     sql_request += """FROM genre 
      LEFT JOIN song_genre ON (song_genre.id_genre = genre.id_genre)
       LEFT JOIN song ON (song_genre.id_song = song.id_song)"""
@@ -57,12 +57,12 @@ def sql_request_songs_by_genre(genre: str, count=False) -> str:
 
 def sql_request_songs_by_year(year: str, count=False) -> str:
     """
-    Request for getting ids of songs by year's of getting at billboard
+    Request to get ids of songs by year's of getting at billboard
     :param year: year
     :param count: if need count then changed request
     :return: str request
     """
-    sql_request = 'SELECT' + get_columns(count)
+    sql_request = 'SELECT' + __get_columns(count)
     sql_request += """FROM song
          LEFT JOIN billboard ON (billboard.id_song = song.id_song)
     WHERE billboard.year ='""" + str(year) + "'"
@@ -72,12 +72,12 @@ def sql_request_songs_by_year(year: str, count=False) -> str:
 
 def sql_request_songs_by_artist(artist: str, count=False) -> str:
     """
-    Request for getting ids of songs by performer artist name
+    Request to get ids of songs by performer artist name
     :param artist: name of artist
     :param count: if need count then changed request
     :return: str request
     """
-    sql_request = 'SELECT' + get_columns(count)
+    sql_request = 'SELECT' + __get_columns(count)
     sql_request += """FROM artist
      LEFT JOIN song_performers ON (song_performers.id_artist = artist.id_artist)
       LEFT JOIN song ON (song_performers.id_song = song.id_song)"""
@@ -88,12 +88,12 @@ def sql_request_songs_by_artist(artist: str, count=False) -> str:
 
 def sql_request_songs_hit_several_times(count=False) -> str:
     """
-    Request for getting ids of songs that hit billboard several times
+    Request to get ids of songs that hit billboard several times
     :param count: if need count then changed request
     :return: str request
     """
     'SLOWLY WORK, NEED REWRITE IT'
-    sql_request = 'SELECT' + get_columns(count)
+    sql_request = 'SELECT' + __get_columns(count)
     sql_request += """FROM song
             WHERE EXISTS (SELECT NULL
               FROM billboard c
@@ -106,7 +106,7 @@ def sql_request_songs_hit_several_times(count=False) -> str:
 
 def sql_request_song(id_song) -> str:
     """
-    Request to getting all info from current song
+    Request to get all info by current song id
     :param id_song: id of a song
     :return: request
     """
@@ -160,4 +160,18 @@ def sql_request_songs_genre(id_genre, limit) -> str:
     sql_request += ' order by song.id_song'
     if limit:
         sql_request += ' LIMIT ' + str(limit)
+    return sql_request
+
+
+def sql_request_songs_artist_ids(id_artist) -> str:
+    """
+    Part of complex request
+    request to get ids songs of artist
+    :param id_artist: id of artist
+    :return: request
+    """
+    sql_request = """SELECT song_performers.id_song
+    FROM artist
+        LEFT JOIN song_performers ON (song_performers.id_artist = artist.id_artist)
+    WHERE artist.id_artist =""" + str(id_artist)
     return sql_request

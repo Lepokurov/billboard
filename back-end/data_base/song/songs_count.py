@@ -1,9 +1,13 @@
-from sql_constructor_general import get_count, get_count_table
+from connection_to_data_base import get_count
+from sql_constructor_general import get_count_table
 import sql_request_songs
 
 
 def get_count_all_song() -> int:
-    return get_count_table('song')
+    sql_request = get_count_table('song')
+
+    count = get_count(sql_request)
+    return count
 
 
 def get_count_song_by_title(title) -> int:

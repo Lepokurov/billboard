@@ -1,7 +1,5 @@
-from models import create_ids
 from songs_list import get_songs_list
-from sql_constructor_general import limit_information
-from connection_to_data_base import get_data_from_db
+from sql_constructor_general import get_ids_by_request
 import sql_request_songs
 
 
@@ -114,14 +112,12 @@ def __get_songs_ids_hit_several_times(content, start, step) -> list:
 
 def _get_ids_song(sql_request, start=0, step=0) -> list:
     """
-    Getting ids of songs list by sql request
+    Getting ids of songs list by sql request. this function is used to add the condition to request
     :param sql_request: sql request
     :param start: the start row
     :param step: number of rows
     :return: list ids of songs by sql request
     """
     sql_request += ' and song.id_song is not null'
-    sql_request = limit_information(sql_request, start, step)
-    sql_data = get_data_from_db(sql_request)
-    id_songs = create_ids(sql_data)
+    id_songs = get_ids_by_request(sql_request, start, step)
     return id_songs
