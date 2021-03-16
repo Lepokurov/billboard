@@ -13,6 +13,23 @@ def sql_request_songs_list() -> str:
     return sql_request
 
 
+def sql_constructor_songs(id_songs: list, order) -> str:
+    """
+    Constructor of the sql request of a songs list
+    :param id_songs: list required ids of songs
+    :param order: request information of 'order by'
+    :return: complete request for getting data of the songs list
+    """
+    sql_request = sql_request_songs_list()
+    if not id_songs:
+        return ""
+    sql_request += "WHERE song.id_song = 0"
+    for id_song in id_songs:
+        sql_request += ' or song.id_song =' + str(id_song)
+    sql_request += order
+    return sql_request
+
+
 def __get_columns(count: bool) -> str:
     """
     getting columns: ids or count rows

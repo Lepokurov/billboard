@@ -1,7 +1,7 @@
 from connection_to_data_base import get_data_from_db
 from models import create_artists_info
 from sql_constructor_general import get_ids_all
-from sql_request_artists import sql_request_artists_list
+from sql_request_artists import sql_constructor_artists
 
 
 def get_artists_all(start, step) -> list:
@@ -20,7 +20,7 @@ def get_artists_all(start, step) -> list:
 def get_artists_list(id_artists: list, order='') -> list:
     """
      Main function for getting list of artists by ids
-    :param id_artists: list required ids of artists
+    :param id_artists: list of required ids of artists
     :param order: request information of 'order by'
     :return: list of artists or empty list if doesn't have required information
     """
@@ -33,19 +33,4 @@ def get_artists_list(id_artists: list, order='') -> list:
     return artists
 
 
-def sql_constructor_artists(id_artists: list, order) -> str:
-    """
-    Constructor of the sql request of a artist list
-    :param id_artists: list required ids of artists
-    :param order: request information of 'order by'
-    :return: complete request for getting data of the artist list
-    """
-    sql_request = sql_request_artists_list()
-    sql_request += ' WHERE artist.id_artist =0'
-    if not id_artists:
-        return ""
-    for id_artist in id_artists:
-        sql_request += ' or artist.id_artist=' + str(id_artist)
-    sql_request += ' GROUP BY artist.id_artist '
-    sql_request += order
-    return sql_request
+

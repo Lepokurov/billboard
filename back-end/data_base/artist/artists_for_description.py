@@ -3,7 +3,7 @@ from sql_request_artists import sql_request_featuring_artists, sql_request_artis
     sql_request_artists_year, sql_request_artists_genre
 
 
-def get_artist(id_artist) -> list:
+def get_artist(id_artist):
     """
     get all information (columns) about artist by id
     :param id_artist: id of artist

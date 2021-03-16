@@ -16,6 +16,24 @@ def sql_request_artists_list() -> str:
     return sql_request
 
 
+def sql_constructor_artists(id_artists: list, order) -> str:
+    """
+    Constructor of the sql request of a artist list
+    :param id_artists: list required ids of artists
+    :param order: request information of 'order by'
+    :return: complete request for getting data of the artist list
+    """
+    sql_request = sql_request_artists_list()
+    sql_request += ' WHERE artist.id_artist =0'
+    if not id_artists:
+        return ""
+    for id_artist in id_artists:
+        sql_request += ' or artist.id_artist=' + str(id_artist)
+    sql_request += ' GROUP BY artist.id_artist '
+    sql_request += order
+    return sql_request
+
+
 def __get_columns(count: bool) -> str:
     """
     getting columns: ids or count rows
@@ -107,9 +125,11 @@ def sql_request_featuring_artists(id_artist) -> str:
         FROM song
           LEFT JOIN song_performers ON (song_performers.id_song = song.id_song) 
             LEFT JOIN artist ON (song_performers.id_artist = artist.id_artist)
-        WHERE song.id_song =0"""
+        WHERE not artist.id_artist = """ + str(id_artist)
+    sql_request += ' and (song.id_song = 0'
     for id_song in id_songs:
-        sql_request += ' or song.id_song =' + str(id_song[0])
+        sql_request += ' or song.id_song =' + str(id_song)
+    sql_request += ') GROUP BY artist.id_artist '
     return sql_request
 
 

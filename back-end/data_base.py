@@ -566,20 +566,6 @@ def get_genres_info_by_artist(start, step) -> dict:
     return genres
 
 
-def get_genres_song(id_song) -> dict:
-    sql_request = """
-    SELECT genre.id_genre, genre.name_genre, genre.image_genre
-    FROM song 
-    LEFT JOIN song_genre ON (song_genre.id_song = song.id_song)
-      LEFT JOIN genre ON (song_genre.id_genre = genre.id_genre)
-    WHERE song.id_song =""" + id_song
-
-    sql_data = _get_data_db(sql_request)
-
-    genres = models.create_genres(sql_data)
-    return genres
-
-
 ########### Genre/genres by song/artist/year ################
 def get_genre(id_genre) -> dict:
     sql_request = "SELECT * from genre where id_genre =" + str(id_genre)
@@ -619,7 +605,21 @@ def get_genres_artist(id_artist) -> dict:
     return genres
 
 
+def get_genres_song(id_song) -> dict:
+    sql_request = """
+    SELECT genre.id_genre, genre.name_genre, genre.image_genre
+    FROM song 
+    LEFT JOIN song_genre ON (song_genre.id_song = song.id_song)
+      LEFT JOIN genre ON (song_genre.id_genre = genre.id_genre)
+    WHERE song.id_song =""" + id_song
+
+    sql_data = _get_data_db(sql_request)
+
+    genres = models.create_genres(sql_data)
+    return genres
+
 ######### genre COUNT ###################
+
 def get_count_current_genre(id_genre):
     sql_request = """
     SELECT COUNT(genre.id_genre) AS counts FROM genre 
