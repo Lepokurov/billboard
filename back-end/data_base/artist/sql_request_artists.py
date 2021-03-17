@@ -144,7 +144,7 @@ def sql_request_performers_of_song(id_song) -> str:
     FROM song
       LEFT JOIN song_performers ON (song_performers.id_song = song.id_song) 
         LEFT JOIN artist ON (song_performers.id_artist = artist.id_artist)
-    WHERE song.id_song =""" + id_song
+    WHERE song.id_song =""" + str(id_song)
     return sql_request
 
 

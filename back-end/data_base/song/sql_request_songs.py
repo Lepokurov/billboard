@@ -13,7 +13,7 @@ def sql_request_songs_list() -> str:
     return sql_request
 
 
-def sql_constructor_songs(id_songs: list, order) -> str:
+def _sql_constructor_songs(id_songs: list, order) -> str:
     """
     Constructor of the sql request of a songs list
     :param id_songs: list required ids of songs

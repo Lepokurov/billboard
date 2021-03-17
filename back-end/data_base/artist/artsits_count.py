@@ -10,7 +10,7 @@ def get_count_all_artist() -> int:
     return count
 
 
-def get_count_artists_by_name(name) -> int:
+def get_count_artists_by_name(name: str) -> int:
     """
     Getting count of the artists with this name
     :param name: artist name
@@ -22,7 +22,7 @@ def get_count_artists_by_name(name) -> int:
     return count
 
 
-def get_count_artists_by_song(song) -> int:
+def get_count_artists_by_song(song: str) -> int:
     """
     Getting count of the artists who performed this song
     :param song: title of song
@@ -34,7 +34,7 @@ def get_count_artists_by_song(song) -> int:
     return count
 
 
-def get_count_artists_by_genre(genre) -> int:
+def get_count_artists_by_genre(genre: str) -> int:
     """
     Getting count of the artists with this genre
     :param genre: name of genre
@@ -55,4 +55,3 @@ def get_count_artists_dead() -> int:
 
     count = get_count(sql_request)
     return count
-

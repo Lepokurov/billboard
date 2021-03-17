@@ -38,6 +38,7 @@ def sql_constructor_genres(start, step, sort) -> str:
 
     return sql_request
 
+
 def sql_request_genre(id_genre) -> str:
     """
     Request to get all info by current song id
@@ -92,7 +93,7 @@ def sql_request_genres_song(id_song) -> str:
     FROM song 
     LEFT JOIN song_genre ON (song_genre.id_song = song.id_song)
       LEFT JOIN genre ON (song_genre.id_genre = genre.id_genre)
-    WHERE song.id_song =""" + id_song
+    WHERE song.id_song =""" + str(id_song)
     return sql_request
 
 

@@ -1,22 +1,22 @@
-from songs_list import get_songs_list
+from songs_list import _get_songs_list
 from sql_constructor_general import get_ids_by_request
 import sql_request_songs
 
 
-def search_songs(content: dict, start: int, step: int) -> list:
+def search_songs(content: dict, start: int, step: int) -> tuple:
     """
-    Get songs by the required parameters
+    Get songs data by the required parameters
     :param content: dictionary that contain the type and value
     :param start: the start row
     :param step: number of rows
-    :return: list of songs by the required parameters
+    :return: tuple song data by the required parameters
     """
-    id_songs = _get_ids_songs_by_search(content, start, step)
-    songs = get_songs_list(id_songs, content['order'])
-    return songs
+    id_songs = __get_ids_songs_by_search(content, start, step)
+    sql_data = _get_songs_list(id_songs, content['order'])
+    return sql_data
 
 
-def _get_ids_songs_by_search(content: dict, start: int, step: int) -> list:
+def __get_ids_songs_by_search(content: dict, start: int, step: int) -> list:
     """
     Searching songs ids by the required parameters
     :param content: dictionary that contain the type and value of searching

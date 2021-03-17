@@ -1,4 +1,4 @@
-def sql_request_years_list() -> str:
+def _sql_request_years_list() -> str:
     """
     Request for list years
     :return: The request that included the columns and tables for necessary information about years
@@ -13,14 +13,14 @@ def sql_request_years_list() -> str:
     return sql_request
 
 
-def sql_constructor_years(years, order):
+def _sql_constructor_years(years, order):
     """
     Constructor of the sql request of a year list
     :param years: list required ids of artists
     :param order: request information of 'order by'
     :return: complete request for getting data of the artist list
     """
-    sql_request = sql_request_years_list()
+    sql_request = _sql_request_years_list()
     sql_request += 'and ('
     for year in years:
         sql_request += " billboard.year = '" + str(year) + "' or"
@@ -30,7 +30,7 @@ def sql_constructor_years(years, order):
     return sql_request
 
 
-def sql_request_search_years(search_year) -> str:
+def _sql_request_search_years(search_year) -> str:
     """
     Request to get appropriate years
     :param search_year: year
@@ -43,7 +43,7 @@ def sql_request_search_years(search_year) -> str:
     return sql_request
 
 
-def sql_request_years_all():
+def _sql_request_years_all():
     """
     request to get count billboard years
     :return: request
@@ -52,18 +52,18 @@ def sql_request_years_all():
     return sql_request
 
 
-def sql_request_years_search(search):
+def _sql_request_years_search(search):
     """
-    request to get count billboard years
+    request to get count billboard years by search year data
     :param search: search year data
     :return: request
     """
-    sql_request = sql_request_years_all()
+    sql_request = _sql_request_years_all()
     sql_request += " and (POSITION('" + str(search) + "' in year) > 0)"
     return sql_request
 
 
-def sql_request_billboard_song(id_song):
+def _sql_request_billboard_song(id_song):
     """
     request to get billboard year and position of song
     :param id_song: id of song
@@ -77,7 +77,7 @@ def sql_request_billboard_song(id_song):
     return sql_request
 
 
-def sql_request_years_genre(id_genre):
+def _sql_request_years_genre(id_genre):
     """
     request to get years that has song with current genre
     :param id_genre: current genre
