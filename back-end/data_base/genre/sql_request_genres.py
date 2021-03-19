@@ -78,7 +78,7 @@ def sql_request_genres_artist(id_artist) -> str:
     FROM artist
       LEFT JOIN artist_genre ON (artist_genre.id_artist = artist.id_artist) 
         LEFT JOIN genre ON (artist_genre.id_genre = genre.id_genre)
-    WHERE artist.id_artist =""" + id_artist
+    WHERE artist.id_artist =""" + str(id_artist)
     return sql_request
 
 

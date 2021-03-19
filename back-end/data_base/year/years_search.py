@@ -1,19 +1,19 @@
 from sql_constructor_general import get_ids_by_request
 from sql_request_years import _sql_request_search_years
-from years_list import _get_years_list
+from years_list import get_years_list
 
 
-def search_years(search_year, start=0, step=0) -> tuple:
+def search_years(search_year, start=0, step=0) -> dict:
     """
     Get tuple of years data by the year
     :param search_year: year
     :param start: the start row
     :param step: number of rows
-    :return: tuple of years data by the required parameters
+    :return: dict of years data by the required parameters
     """
     years_list = __get_years_(search_year, start, step)
-    sql_data = _get_years_list(years_list)
-    return sql_data
+    years = get_years_list(years_list)
+    return years
 
 
 def __get_years_(search_year, start, step) -> list:

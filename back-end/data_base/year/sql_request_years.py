@@ -73,7 +73,7 @@ def _sql_request_billboard_song(id_song):
         SELECT billboard.year, billboard.position
     FROM song
       LEFT JOIN billboard ON (billboard.id_song = song.id_song)
-    WHERE song.id_song =""" + id_song
+    WHERE song.id_song =""" + str(id_song)
     return sql_request
 
 
@@ -83,6 +83,7 @@ def _sql_request_years_genre(id_genre):
     :param id_genre: current genre
     :return: years list
     """
+
     sql_request = """
     SELECT  billboard.year, COUNT(genre.id_genre) AS counts
     FROM genre

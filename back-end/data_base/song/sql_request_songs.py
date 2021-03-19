@@ -36,10 +36,10 @@ def __get_columns(count: bool) -> str:
     :param count: if need count then changed request
     :return:
     """
-    if not count:
-        columns = 'COUNT(*)'
+    if count:
+        columns = ' COUNT(*) '
     else:
-        columns = 'song.id_song'
+        columns = ' song.id_song '
     return columns
 
 
@@ -79,8 +79,8 @@ def sql_request_songs_by_year(year: str, count=False) -> str:
     :param count: if need count then changed request
     :return: str request
     """
-    sql_request = 'SELECT' + __get_columns(count)
-    sql_request += """FROM song
+    sql_request = 'SELECT ' + __get_columns(count)
+    sql_request += """ FROM song
          LEFT JOIN billboard ON (billboard.id_song = song.id_song)
     WHERE billboard.year ='""" + str(year) + "'"
 
@@ -141,9 +141,9 @@ def sql_request_songs_artist(id_artist, id_song_pass, limit) -> str:
     """
     sql_request = sql_request_songs_list()
     sql_request += 'WHERE artist.id_artist =' + str(id_artist)
-    sql_request += 'and not song.id_song =' + str(id_song_pass) + ' order by song.id_song'
+    sql_request += ' and not song.id_song =' + str(id_song_pass) + ' order by song.id_song'
     if limit:
-        sql_request += 'LIMIT ' + str(limit)
+        sql_request += ' LIMIT ' + str(limit)
     return sql_request
 
 

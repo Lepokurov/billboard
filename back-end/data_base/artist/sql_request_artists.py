@@ -8,7 +8,7 @@ def sql_request_artists_list() -> str:
     :return: The request that included the columns and tables for necessary information about artists
     """
     sql_request = """
-    SELECT artist.id_artist, artist.name_artist, artist.age_artist, artist.image_artist, artist.group_artist,
+    SELECT artist.id_artist, artist.name_artist, artist.age_artist, artist.group_artist, artist.image_artist, 
      COUNT(artist.id_artist) AS songs
     FROM artist
       LEFT JOIN song_performers ON (song_performers.id_artist = artist.id_artist) 
@@ -121,7 +121,7 @@ def sql_request_featuring_artists(id_artist) -> str:
     :return: str request
     """
     id_songs = get_ids_by_request(sql_request_songs_artist_ids(id_artist))
-    sql_request = """ SELECT artist.id_artist, artist.name_artist, artist.image_artist
+    sql_request = """ SELECT DISTINCT artist.id_artist, artist.name_artist, artist.image_artist
         FROM song
           LEFT JOIN song_performers ON (song_performers.id_song = song.id_song) 
             LEFT JOIN artist ON (song_performers.id_artist = artist.id_artist)

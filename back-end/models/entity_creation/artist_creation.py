@@ -1,3 +1,0 @@
-from Artist import Artist
-
-

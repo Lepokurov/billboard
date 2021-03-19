@@ -55,6 +55,7 @@ def create_ids(sql_data):
 def create_songs_info(sql_data):
     # I written that nightmare for increasing speed of loading.
     # 1 request to bd more faster that 200 (50 songs * find artists * years in billboard)
+    # I rty to unit the column at request, byt it's was broke sort, and sor t is so important to my project
     songs = {}
 
     id_song_list = {}

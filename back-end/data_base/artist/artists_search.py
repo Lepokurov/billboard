@@ -1,20 +1,22 @@
 from artists_list import _get_artists_list
+from mapper_artist import create_artists_list
 from sql_constructor_general import get_ids_by_request
 from sql_request_artists import sql_request_artists_by_name, sql_request_artists_by_song, \
     sql_request_artists_by_genre, sql_request_artists_dead
 
 
-def search_artists(content: dict, start: int, step: int) -> tuple:
+def search_artists(content: dict, start: int, step: int) -> dict:
     """
     Get artists data by the required parameters
     :param content: dictionary that contain the type and value of searching
     :param start: the start row
     :param step: number of rows
-    :return: tuple of artists data by the required parameters
+    :return: dict of artists data by the required parameters
     """
     id_songs = __get_ids_artists_by_search(content, start, step)
     sql_data = _get_artists_list(id_songs, content['order'])
-    return sql_data
+    artists = create_artists_list(sql_data)
+    return artists
 
 
 def __get_ids_artists_by_search(content: dict, start: int, step: int) -> list:
