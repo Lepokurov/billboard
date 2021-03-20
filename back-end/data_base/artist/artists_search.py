@@ -5,7 +5,7 @@ from sql_request_artists import sql_request_artists_by_name, sql_request_artists
     sql_request_artists_by_genre, sql_request_artists_dead
 
 
-def search_artists(content: dict, start: int, step: int) -> dict:
+def search_artists(content: dict, start: int, step: int) -> list:
     """
     Get artists data by the required parameters
     :param content: dictionary that contain the type and value of searching

@@ -2,13 +2,20 @@ from Song import Song
 from artists_for_description import get_performers_of_song
 from generel_tool import add_to_class
 from genres_for_description import get_genres_song
+from songs_count import get_count_search
 from songs_for_description import get_song, get_songs_artist
+from songs_list import get_songs_all
+from songs_search import search_songs
 from years_for_description import get_billboard_of_song
 
 
 def song_information(song: Song, content: dict):
     if content['page'] == 'solo':
         __song_solo_page(song)
+    elif content['page'] == 'list':
+        __song_list_page(song, content)
+    elif content['page'] == 'count':
+        __get_count_songs_list(song, content)
 
 
 def __song_solo_page(song: Song):
@@ -22,3 +29,19 @@ def __song_solo_page(song: Song):
     song_['genres'] = get_genres_song(id_song)
     song_['billboard'] = get_billboard_of_song(id_song)
     add_to_class(song, song_)
+
+
+def __song_list_page(song: Song, content: dict):
+    start = song.id
+    step = song.step
+    if content['type'] == 'all':
+        songs = get_songs_all(start, step)
+    else:
+        songs = search_songs(content, start, step)
+    song.list = songs
+    del song.step
+    del song.id
+
+
+def __get_count_songs_list(song: Song, content: dict):
+    song.count = get_count_search(content)

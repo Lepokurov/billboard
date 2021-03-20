@@ -8,4 +8,5 @@ def serialize_JSON(billboard_element) -> json:
     :return: json
     """
     #    I not sure if it's legal to do like that way.
-    return json.dumps(billboard_element.__dict__)
+    dict_elem: dict = billboard_element.__dict__
+    return json.dumps(dict_elem)

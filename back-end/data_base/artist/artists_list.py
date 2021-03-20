@@ -4,12 +4,12 @@ from sql_constructor_general import get_ids_all
 from sql_request_artists import sql_constructor_artists
 
 
-def get_artists_all(start: int, step: int) -> dict:
+def get_artists_all(start: int, step: int) -> list:
     """
     Getting list artists from start to end (start+step) inclusive
     :param start: the start row
     :param step: number of rows
-    :return: dict artists data
+    :return: list artists data
     """
     id_artists = get_ids_all(start, step)
     order = 'order artist.id_artist'

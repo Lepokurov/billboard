@@ -3,14 +3,15 @@ from sql_request_years import _sql_request_search_years
 from years_list import get_years_list
 
 
-def search_years(search_year, start=0, step=0) -> dict:
+def search_years(content: dict, start=0, step=0) -> dict:
     """
     Get tuple of years data by the year
-    :param search_year: year
+    :param content: dictionary that contain the type and value
     :param start: the start row
     :param step: number of rows
     :return: dict of years data by the required parameters
     """
+    search_year = content['value']
     years_list = __get_years_(search_year, start, step)
     years = get_years_list(years_list)
     return years
@@ -19,7 +20,7 @@ def search_years(search_year, start=0, step=0) -> dict:
 def __get_years_(search_year, start, step) -> list:
     """
     get years (like ids) from search information
-    :param search_year:search information
+    :param search_year: search information
     :param start: the start row
     :param step: number of rows
     :return: years (like ids)

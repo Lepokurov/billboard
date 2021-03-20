@@ -4,11 +4,19 @@ import controller
 
 from flask import Flask, render_template, redirect, url_for, request
 
+from song_controller import get_songs, count_song_elem
+
 app = Flask(__name__)
 
 # calculates once to increase speed
 max_count = 0
 title_page = ''
+
+
+def get_count_of_page(count_elem):
+    max_page = max_count / count_elem
+    max_page = math.ceil(max_page)
+    return max_page
 
 
 ########### SONGS ##################
@@ -18,37 +26,13 @@ def index():
     return render_template('index.html', songs=songs)
 
 
-@app.route('/songs/<content>/<page>', methods=["GET"])
-def songs_show(page, content):
+@app.route('/songs/<type_>/<value_>/<page>', methods=["GET"])
+def songs_show(page, type_, value_):
     global max_count, title_page
+    songs_elem = 51
     page = int(page)
-
-    songs = {}
-
-    if content == 'default':
-        songs = controller.get_all_songs(page)
-
-    elif 'year' in content:
-        year = content[4:]
-        songs = controller.get_all_songs_by_year(page, year)
-
-    elif 'artist' in content:
-        artist = content[6:]
-        songs = controller.get_all_songs_by_artist_name(page, artist)
-
-    elif 'title' in content:
-        title = content[5:]
-        songs = controller.get_all_songs_by_title(page, title)
-
-    elif 'genre' in content:
-        genre = content[5:]
-        songs = controller.get_all_songs_by_genre(page, genre)
-
-    elif 'songs_billboard_more_once' in content:
-        songs = controller.get_all_songs_billboard_more_once(page)
-
-    max_page = max_count / 51
-    max_page = math.ceil(max_page)
+    songs = get_songs(type_, value_, page, songs_elem)
+    max_page = get_count_of_page(songs_elem)
     return render_template('songs.html', songs=songs, max_page=max_page, page=page, next_page=page + 1,
                            previous_page=page - 1, title_page=title_page)
 
@@ -56,20 +40,20 @@ def songs_show(page, content):
 @app.route('/songs_default', methods=["GET"])
 def songs_default():
     global max_count, title_page
-    max_count = controller.get_all_songs_count()
-    title_page = 'Songs : ' + str(max_count)
-    content = 'default'
-    return redirect(url_for('songs_show', page=1, content=content))
+    type_ = 'all'
+    max_count = count_song_elem(type_, '')
+    title_page = 'All songs : ' + str(max_count)
+    return redirect(url_for('songs_show', page=1, type_=type_, value_='_'))
 
 
 @app.route('/songs_by_year', methods=["POST"])
 def songs_by_year():
     global max_count, title_page
     year = request.form['year']
-    content = 'year' + year
-    max_count = controller.get_all_songs_count_by_year(year.lower())
+    type_ = 'by_year'
+    max_count = count_song_elem(type_, year)
     title_page = 'Songs of ' + year + ' year: ' + str(max_count)
-    return redirect(url_for('songs_show', page=1, content=content))
+    return redirect(url_for('songs_show', page=1, type_=type_, value_=year))
 
 
 @app.route('/songs_by_artist', methods=["POST"])
@@ -307,20 +291,3 @@ def year_show(year):
 def genre_show(id_genre):
     genre = controller.get_genre_info(id_genre)
     return render_template('genre.html', genre=genre)
-
-
-###########################
-@app.route('/main', methods=["GET"])
-def main():
-    return render_template('main.html')
-
-
-@app.route('/get_artist', methods=["POST"])
-def add_message():
-    id_artist = request.form['id']
-    artist = get_artist(id_artist)
-    name = artist['name_artist']
-    age = artist['age_artist']
-    image = artist['image_artist']
-    artists.append(Artist(name, age, image))
-    return redirect(url_for('main'))

@@ -4,7 +4,7 @@ from sql_constructor_general import get_ids_by_request
 import sql_request_songs
 
 
-def search_songs(content: dict, start: int, step: int) -> dict:
+def search_songs(content: dict, start: int, step: int) -> list:
     """
     Get songs data by the required parameters
     :param content: dictionary that contain the type and value

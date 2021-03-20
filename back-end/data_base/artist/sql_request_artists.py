@@ -40,7 +40,7 @@ def __get_columns(count: bool) -> str:
     :param count: if need count then changed request
     :return: columns
     """
-    if not count:
+    if count:
         columns = 'COUNT(*)'
     else:
         columns = 'artist.id_artist'
@@ -55,7 +55,7 @@ def sql_request_artists_by_name(name: str, count=False) -> str:
     :return: str request
     """
 
-    sql_request = "SELECT " + __get_columns(count) + " FROM artists "
+    sql_request = "SELECT " + __get_columns(count) + " FROM artist "
     sql_request += "WHERE POSITION('" + name + "' in LOWER(name_artist))>0"
     return sql_request
 

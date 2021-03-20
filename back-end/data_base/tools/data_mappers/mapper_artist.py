@@ -22,7 +22,7 @@ def create_artists_list(sql_data: tuple) -> list:
     """
     artists = []
     for sql_line in sql_data:
-        artist = create_data(sql_line)
+        artist = __artist(sql_line)
         artist['songs_count'] = sql_line[5]
         artists.append(artist)
     return artists

@@ -4,14 +4,31 @@ from sql_request_songs import sql_request_songs_by_title, sql_request_songs_by_a
     sql_request_songs_by_genre, sql_request_songs_hit_several_times
 
 
-def get_count_all_song() -> int:
+def get_count_search(content) -> int:
+    count = 0
+    if content['type'] == 'by_title':
+        count = __get_count_song_by_title(content['value'])
+    elif content['type'] == 'by_genre':
+        count = __get_count_song_by_genre(content['value'])
+    elif content['type'] == 'by_year':
+        count = __get_count_song_by_year(content['value'])
+    elif content['type'] == 'by_artist':
+        count = __get_count_song_by_artist(content['value'])
+    elif content['type'] == 'hit_several_times':
+        count = __get_count_song_billboard_more_once()
+    elif content['type'] == 'all':
+        count = __get_count_all_song()
+    return count
+
+
+def __get_count_all_song() -> int:
     sql_request = get_count_table('song')
 
     count = get_count(sql_request)
     return count
 
 
-def get_count_song_by_title(title) -> int:
+def __get_count_song_by_title(title) -> int:
     """
     Getting count of songs with this title
     :param title: title of song
@@ -23,7 +40,7 @@ def get_count_song_by_title(title) -> int:
     return count
 
 
-def get_count_song_by_artist(artist) -> int:
+def __get_count_song_by_artist(artist) -> int:
     """
     Getting count of songs with this artist
     :param artist: name of artist
@@ -35,7 +52,7 @@ def get_count_song_by_artist(artist) -> int:
     return count
 
 
-def get_count_song_by_year(year) -> int:
+def __get_count_song_by_year(year) -> int:
     """
     Getting count of songs with this year
     :param year: year's of getting at billboard
@@ -47,7 +64,7 @@ def get_count_song_by_year(year) -> int:
     return count
 
 
-def get_count_song_by_genre(genre) -> int:
+def __get_count_song_by_genre(genre) -> int:
     """
     Getting count of songs with this genre
     :param genre: name genre
@@ -59,7 +76,7 @@ def get_count_song_by_genre(genre) -> int:
     return count
 
 
-def get_count_song_billboard_more_once() -> int:
+def __get_count_song_billboard_more_once() -> int:
     """
      Getting count of songs that hits billboard several times
     :return: count
