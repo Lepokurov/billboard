@@ -10,10 +10,8 @@ def limit_information(sql_request: str, start, step) -> str:
     :param step: number of rows
     :return: request str
     """
-    if start:
-        sql_request += ' LIMIT ' + str(step)
-    if step:
-        sql_request += ' OFFSET ' + str(start)
+    sql_request += ' LIMIT ' + str(step)
+    sql_request += ' OFFSET ' + str(start)
     return sql_request
 
 

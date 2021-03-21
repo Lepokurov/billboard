@@ -4,7 +4,7 @@ import controller
 
 from flask import Flask, render_template, redirect, url_for, request
 
-from song_controller import get_songs, count_song_elem
+from song_controller import get_songs, count_songs
 
 app = Flask(__name__)
 
@@ -41,7 +41,7 @@ def songs_show(page, type_, value_):
 def songs_default():
     global max_count, title_page
     type_ = 'all'
-    max_count = count_song_elem(type_, '')
+    max_count = count_songs(type_)
     title_page = 'All songs : ' + str(max_count)
     return redirect(url_for('songs_show', page=1, type_=type_, value_='_'))
 
@@ -51,7 +51,7 @@ def songs_by_year():
     global max_count, title_page
     year = request.form['year']
     type_ = 'by_year'
-    max_count = count_song_elem(type_, year)
+    max_count = count_songs(type_, year)
     title_page = 'Songs of ' + year + ' year: ' + str(max_count)
     return redirect(url_for('songs_show', page=1, type_=type_, value_=year))
 
@@ -59,40 +59,41 @@ def songs_by_year():
 @app.route('/songs_by_artist', methods=["POST"])
 def songs_by_artist():
     global max_count, title_page
-    artist = request.form['artist']
-    content = 'artist' + artist.lower()
-    max_count = controller.get_all_songs_count_by_artist_name(artist.lower())
-    title_page = 'Songs of ' + artist + ' artist: ' + str(max_count)
-    return redirect(url_for('songs_show', page=1, content=content))
+    artist = request.form['artist'].lower()
+    type_ = 'by_artist'
+    max_count = count_songs(type_, artist)
+    title_page = 'Songs of ' + request.form['artist'] + ' artist: ' + str(max_count)
+    return redirect(url_for('songs_show', page=1, type_=type_, value_=artist))
 
 
 @app.route('/songs_by_title', methods=["POST"])
 def songs_by_title():
     global max_count, title_page
-    title = request.form['title']
-    content = 'title' + title.lower()
-    max_count = controller.get_all_songs_count_by_title(title.lower())
-    title_page = 'Songs ' + title + ' title: ' + str(max_count)
-    return redirect(url_for('songs_show', page=1, content=content))
+    title = request.form['title'].lower()
+    type_ = 'by_title'
+    max_count = count_songs(type_, title)
+    title_page = 'Songs ' + request.form['title'] + ' title: ' + str(max_count)
+    return redirect(url_for('songs_show', page=1,  type_=type_, value_=title))
 
 
 @app.route('/songs_by_genre', methods=["POST"])
 def songs_by_genre():
     global max_count, title_page
-    genre = request.form['genre']
-    content = 'genre' + genre.lower()
-    max_count = controller.get_all_songs_count_by_genre(genre.lower())
-    title_page = 'Songs ' + genre + ' genre: ' + str(max_count)
-    return redirect(url_for('songs_show', page=1, content=content))
+    genre = request.form['genre'].lower()
+    type_ = 'by_genre'
+    max_count = count_songs(type_, genre)
+    title_page = 'Songs ' + request.form['genre'] + ' genre: ' + str(max_count)
+    return redirect(url_for('songs_show', page=1, type_=type_, value_=genre))
 
 
-@app.route('/songs_billboard_more_once', methods=["POST"])
-def songs_several_times():
+@app.route('/songs_hit_several_times', methods=["POST"])
+def hit_several_times():
     global max_count, title_page
-    max_count = controller.get_all_songs_count_billboard_more_once()
-    title_page = 'Songs in billboard more once time: ' + str(max_count)
-    content = 'songs_billboard_more_once'
-    return redirect(url_for('songs_show', page=1, content=content))
+    type_ = 'hit_several_times'
+    max_count = count_songs(type_)
+    title_page = 'Songs hit billboard several times: ' + str(max_count)
+
+    return redirect(url_for('songs_show', page=1, type_=type_, value_='_'))
 
 
 #####################################

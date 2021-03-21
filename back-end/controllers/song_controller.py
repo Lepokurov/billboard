@@ -1,5 +1,5 @@
 from Song import Song
-from general_controller import get_elem_list, get_elem_solo, get_elem_count_list
+from general_controller import get_elem_list, get_elem_solo, get_elem_count
 
 
 def get_songs(type_: str, value_: str, page: int, step: int):
@@ -13,8 +13,8 @@ def get_song(id_song):
     return song
 
 
-def count_song_elem(type_: str, value_: str):
-    count = get_elem_count_list(Song, type_, value_)
+def count_songs(type_: str, value_=''):
+    count = get_elem_count(Song, type_, value_)
     return count
 
 
@@ -39,4 +39,4 @@ def prepare_song_info_to_show(songs):
         song['year'] = year[:-2]
         song['position'] = position[:-2]
 
-get_songs('all', '', 1, 52)
+get_songs('by_year', '1999', 1, 52)

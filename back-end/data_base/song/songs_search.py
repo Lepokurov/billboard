@@ -52,7 +52,7 @@ def __get_songs_ids_by_title(content, start, step) -> list:
     """
     sql_request = sql_request_songs.sql_request_songs_by_title(content['value'])
     content['order'] = 'order by billboard.position, artist.id_artist'
-    ids = _get_ids_song(sql_request, start, step)
+    ids = get_ids_by_request(sql_request, start, step)
     return ids
 
 
@@ -66,7 +66,7 @@ def __get_songs_ids_by_genre(content, start, step) -> list:
     """
     sql_request = sql_request_songs.sql_request_songs_by_genre(content['value'])
     content['order'] = 'order by billboard.position, artist.id_artist'
-    ids = _get_ids_song(sql_request, start, step)
+    ids = get_ids_by_request(sql_request, start, step)
     return ids
 
 
@@ -79,9 +79,10 @@ def __get_songs_ids_by_year(content, start, step) -> list:
     :return: list ids of songs by year
     """
     sql_request = sql_request_songs.sql_request_songs_by_year(content['value'])
-    content['order'] = ' order by billboard.position'
+    content['order'] = " order by case when year = '"+content['value']+\
+                       "' then '1' else billboard.year end, billboard.position"
 
-    ids = _get_ids_song(sql_request, start, step)
+    ids = get_ids_by_request(sql_request, start, step)
     return ids
 
 
@@ -95,7 +96,7 @@ def __get_songs_ids_by_artist(content, start, step) -> list:
     """
     sql_request = sql_request_songs.sql_request_songs_by_artist(content['value'])
     content['order'] = 'order by billboard.position, artist.id_artist'
-    ids = _get_ids_song(sql_request, start, step)
+    ids = get_ids_by_request(sql_request, start, step)
     return ids
 
 
@@ -108,19 +109,8 @@ def __get_songs_ids_hit_several_times(content, start, step) -> list:
     :return: list ids of songs that hit billboard several times
     """
     sql_request = sql_request_songs.sql_request_songs_hit_several_times()
-    content['order'] = 'order by billboard.position, artist.id_artist'
-    ids = _get_ids_song(sql_request, start, step)
+    content['order'] = 'order by billboard.id_song, artist.id_artist'
+    ids = get_ids_by_request(sql_request, start, step)
     return ids
 
 
-def _get_ids_song(sql_request, start=0, step=0) -> list:
-    """
-    Getting ids of songs list by sql request. this function is used to add the condition to request
-    :param sql_request: sql request
-    :param start: the start row
-    :param step: number of rows
-    :return: list ids of songs by sql request
-    """
-    sql_request += ' and song.id_song is not null'
-    id_songs = get_ids_by_request(sql_request, start, step)
-    return id_songs

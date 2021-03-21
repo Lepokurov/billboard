@@ -67,8 +67,9 @@ def sql_request_songs_by_genre(genre: str, count=False) -> str:
     sql_request += """FROM genre 
      LEFT JOIN song_genre ON (song_genre.id_genre = genre.id_genre)
       LEFT JOIN song ON (song_genre.id_song = song.id_song)"""
-    sql_request += "WHERE POSITION('" + genre + "' in LOWER(name_genre))>0 and song.id_song is not null"
-
+    sql_request += "WHERE POSITION('" + genre + "' in LOWER(name_genre))>0 and song.id_song is not null "
+    if not count:
+        sql_request += "order by song.id_song"
     return sql_request
 
 
@@ -109,15 +110,12 @@ def sql_request_songs_hit_several_times(count=False) -> str:
     :param count: if need count then changed request
     :return: str request
     """
-    'SLOWLY WORK, NEED REWRITE IT'
-    sql_request = 'SELECT' + __get_columns(count)
-    sql_request += """FROM song
-            WHERE EXISTS (SELECT NULL
-              FROM billboard c
-              WHERE c.id_song = song.id_song
-              GROUP BY c.id_song
-              HAVING COUNT(*) > 1 ) """
-
+    if not count:
+        sql_request = """SELECT billboard.id_song 
+        FROM billboard GROUP BY billboard.id_song HAVING COUNT(*) > 1 order by billboard.id_song"""
+    else:
+        sql_request = """SELECT count(*) FROM 
+        (SELECT billboard.id_song FROM billboard GROUP BY billboard.id_song HAVING COUNT(*) > 1)a"""
     return sql_request
 
 

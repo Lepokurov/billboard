@@ -23,7 +23,7 @@ def get_elem_solo(element, id_elem):
     return elem
 
 
-def get_elem_count_list(element, type_, value_):
+def get_elem_count(element, type_, value_):
     content = create_content('count', type_, value_)
     elem = element(0)
     factory(elem, content)
