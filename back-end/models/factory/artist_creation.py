@@ -2,6 +2,7 @@ from Artist import Artist
 from artists_for_description import get_artist, get_featuring_artists
 from artists_list import get_artists_all
 from artists_search import search_artists
+from artsits_count import get_count_search_artist
 from generel_tool import add_to_class
 from genres_for_description import get_genres_artist
 from songs_for_description import get_songs_artist
@@ -11,8 +12,10 @@ from years_list import get_years_list
 def artist_information(artist: Artist, content: dict):
     if content['page'] == 'solo':
         __artist_solo_page(artist)
-    if content['page'] == 'list':
+    elif content['page'] == 'list':
         __artist_list_page(artist, content)
+    elif content['page'] == 'count':
+        __get_count_artists_list(artist, content)
 
 
 def __artist_solo_page(artist: Artist):
@@ -40,3 +43,7 @@ def __artist_list_page(artist: Artist, content: dict):
     artist.list = artists
     del artist.step
     del artist.id
+
+
+def __get_count_artists_list(artist: Artist, content: dict):
+    artist.count = get_count_search_artist(content)

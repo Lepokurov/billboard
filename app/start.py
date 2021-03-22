@@ -4,7 +4,9 @@ import controller
 
 from flask import Flask, render_template, redirect, url_for, request
 
-from song_controller import get_songs, count_songs
+from artist_controller import get_artists, count_artists, get_artist
+from song_controller import get_songs, count_songs, get_song
+from year_controller import get_years, count_years, get_year
 
 app = Flask(__name__)
 
@@ -102,31 +104,13 @@ def hit_several_times():
 ########### Artists ##################
 
 
-@app.route('/artists/<content>/<page>', methods=["GET"])
-def artists_show(page, content):
+@app.route('/artists/<type_>/<value_>/<page>', methods=["GET"])
+def artists_show(page, type_, value_):
     global max_count, title_page
+    artists_elem = 51
     page = int(page)
-    artists = {}
-    if content == 'default':
-        artists = controller.get_all_artists(page)
-
-    elif 'name' in content:
-        name = content[4:]
-        artists = controller.get_all_artists_by_name(page, name)
-
-    elif 'song' in content:
-        song = content[4:]
-        artists = controller.get_all_artists_by_song(page, song)
-
-    elif 'genre' in content:
-        genre = content[5:]
-        artists = controller.get_all_artists_by_genre(page, genre)
-
-    elif 'artists_dead' == content:
-        artists = controller.get_all_artists_dead(page)
-
-    max_page = max_count / 51
-    max_page = math.ceil(max_page)
+    artists = get_artists(type_, value_, page, artists_elem)
+    max_page = get_count_of_page(artists_elem)
     return render_template('artists.html', artists=artists, max_page=max_page, page=page, next_page=page + 1,
                            previous_page=page - 1, title_page=title_page)
 
@@ -134,70 +118,64 @@ def artists_show(page, content):
 @app.route('/artists_default', methods=["GET"])
 def artists_default():
     global max_count, title_page
-    max_count = controller.get_all_artists_count()
-    title_page = 'Artists : ' + str(max_count)
-    content = 'default'
-    return redirect(url_for('artists_show', page=1, content=content))
+    type_ = 'all'
+    max_count = count_artists(type_)
+    title_page = 'Artists: ' + str(max_count)
+
+    return redirect(url_for('artists_show', page=1, type_=type_, value_='_'))
 
 
 @app.route('/artist_by_name', methods=["POST"])
 def artist_by_name():
     global max_count, title_page
-    name = request.form['name']
-    content = 'name' + name.lower()
-    max_count = controller.get_all_artists_count_by_name(name.lower())
-    title_page = 'Artists ' + name + ' name: ' + str(max_count)
-    return redirect(url_for('artists_show', page=1, content=content))
+    name = request.form['name'].lower()
+    type_ = 'by_name'
+    max_count = count_artists(type_, name)
+    title_page = 'Artists by ' + request.form['name'] + ' name: ' + str(max_count)
+    return redirect(url_for('artists_show', page=1, type_=type_, value_=name))
 
 
 @app.route('/artist_by_song', methods=["POST"])
 def artist_by_song():
     global max_count, title_page
-    song = request.form['song']
-    content = 'song' + song.lower()
-    max_count = controller.get_all_artists_count_by_song(song.lower())
-    title_page = 'Artists ' + song + ' song: ' + str(max_count)
-    return redirect(url_for('artists_show', page=1, content=content))
+    song = request.form['song'].lower()
+    type_ = 'by_song'
+    max_count = count_artists(type_, song)
+    title_page = 'Artists by ' + request.form['song'] + ' song: ' + str(max_count)
+    return redirect(url_for('artists_show', page=1, type_=type_, value_=song))
 
 
 @app.route('/artist_by_genre', methods=["POST"])
 def artist_by_genre():
     global max_count, title_page
-    genre = request.form['genre']
-    content = 'genre' + genre.lower()
-    max_count = controller.get_all_artists_count_by_genre(genre.lower())
-    title_page = 'Artists ' + genre + ' genre: ' + str(max_count)
-    return redirect(url_for('artists_show', page=1, content=content))
+    genre = request.form['genre'].lower()
+    type_ = 'by_genre'
+    max_count = count_artists(type_, genre)
+    title_page = 'Artists by ' + request.form['genre'] + ' genre: ' + str(max_count)
+    return redirect(url_for('artists_show', page=1, type_=type_, value_=genre))
 
 
 @app.route('/artist_dead', methods=["POST"])
 def artists_dead():
     global max_count, title_page
-    max_count = controller.get_all_artists_count_dead()
+    type_ = 'dead'
+    max_count = count_artists(type_)
     title_page = 'Dead artists: ' + str(max_count)
-    content = 'artists_dead'
-    return redirect(url_for('artists_show', page=1, content=content))
+
+    return redirect(url_for('artists_show', page=1, type_=type_, value_='_'))
 
 
 #####################################
 
 
 ############# Years ##################
-@app.route('/years/<content>/<page>', methods=["GET"])
-def years_show(page, content):
+@app.route('/years/<type_>/<value_>/<page>', methods=["GET"])
+def years_show(page, type_, value_):
     global max_count, title_page
+    years_elem = 21
     page = int(page)
-    years = {}
-
-    if content == 'default':
-        years = controller.get_all_years(page)
-
-    elif 'search' in content:
-        year = content[6:]
-        years = controller.get_all_years_search(page, year)
-
-    max_page = max_count / 21
-    max_page = math.ceil(max_page)
+    years = get_years(type_, value_, page, years_elem)
+    max_page = get_count_of_page(years_elem)
     return render_template('years.html', years=years, max_page=max_page, page=page, next_page=page + 1,
                            previous_page=page - 1, title_page=title_page)
 
@@ -205,20 +183,21 @@ def years_show(page, content):
 @app.route('/year_default', methods=["GET"])
 def year_default():
     global max_count, title_page
-    max_count = controller.get_all_years_count()
-    title_page = 'Years : ' + str(max_count)
-    content = 'default'
-    return redirect(url_for('years_show', page=1, content=content))
+    type_ = 'all'
+    max_count = count_years(type_)
+    title_page = 'Years: ' + str(max_count)
+
+    return redirect(url_for('years_show', page=1, type_=type_, value_='_'))
 
 
 @app.route('/year_search', methods=["POST"])
 def year_search():
     global max_count, title_page
     search = request.form['search']
-    content = 'search' + search.lower()
-    max_count = controller.get_all_years_count_search(search.lower())
-    title_page = 'Search ' + search + ' in years: ' + str(max_count)
-    return redirect(url_for('years_show', page=1, content=content))
+    type_ = 'search'
+    max_count = count_years(type_, search)
+    title_page = 'Years of ' + search + ': ' + str(max_count)
+    return redirect(url_for('years_show', page=1, type_=type_, value_=search))
 
 
 #####################################
@@ -272,20 +251,20 @@ def genres_artists():
 ############ Solo pages #################
 @app.route('/song_show/<id_song>', methods=["GET"])
 def song_show(id_song):
-    song = controller.get_song_info(str(id_song))
+    song = get_song(id_song)
     return render_template('song.html', song=song)
 
 
 @app.route('/artist_show/<id_artist>', methods=["GET"])
 def artist_show(id_artist):
-    artist = controller.get_artist_info(str(id_artist))
+    artist = get_artist(id_artist)
     return render_template('artist.html', artist=artist)
 
 
-@app.route('/year_show/<year>', methods=["GET"])
-def year_show(year):
-    year_info = controller.get_year_info(year)
-    return render_template('year.html', year=year_info, current_year=year)
+@app.route('/year_show/<year_>', methods=["GET"])
+def year_show(year_):
+    year = get_year(year_)
+    return render_template('year.html', year=year, current_year=year_)
 
 
 @app.route('/genre_show/<id_genre>', methods=["GET"])

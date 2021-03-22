@@ -3,14 +3,29 @@ from connection_to_data_base import get_count
 from sql_constructor_general import get_count_table
 
 
-def get_count_all_artist() -> int:
+def get_count_search_artist(content) -> int:
+    count = 0
+    if content['type'] == 'by_name':
+        count = __get_count_artists_by_name(content['value'])
+    elif content['type'] == 'by_song':
+        count = __get_count_artists_by_song(content['value'])
+    elif content['type'] == 'by_genre':
+        count = __get_count_artists_by_genre(content['value'])
+    elif content['type'] == 'dead':
+        count = __get_count_artists_dead()
+    elif content['type'] == 'all':
+        count = __get_count_all_artist()
+    return count
+
+
+def __get_count_all_artist() -> int:
     sql_request = get_count_table('artist')
 
     count = get_count(sql_request)
     return count
 
 
-def get_count_artists_by_name(name: str) -> int:
+def __get_count_artists_by_name(name: str) -> int:
     """
     Getting count of the artists with this name
     :param name: artist name
@@ -22,7 +37,7 @@ def get_count_artists_by_name(name: str) -> int:
     return count
 
 
-def get_count_artists_by_song(song: str) -> int:
+def __get_count_artists_by_song(song: str) -> int:
     """
     Getting count of the artists who performed this song
     :param song: title of song
@@ -34,7 +49,7 @@ def get_count_artists_by_song(song: str) -> int:
     return count
 
 
-def get_count_artists_by_genre(genre: str) -> int:
+def __get_count_artists_by_genre(genre: str) -> int:
     """
     Getting count of the artists with this genre
     :param genre: name of genre
@@ -46,7 +61,7 @@ def get_count_artists_by_genre(genre: str) -> int:
     return count
 
 
-def get_count_artists_dead() -> int:
+def __get_count_artists_dead() -> int:
     """
     Getting count of the dead artists
     :return: count

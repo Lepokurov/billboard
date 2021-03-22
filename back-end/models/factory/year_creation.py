@@ -3,16 +3,21 @@ from artists_for_description import get_artists_of_year
 from generel_tool import add_to_class
 from genres_for_description import get_genres_year
 from songs_for_description import get_songs_year
+from years_count import get_count_search_year
 from years_list import get_years_all
 from years_search import search_years
 
 
 def year_information(year: Year, content: dict):
     if content['page'] == 'solo':
-        __song_solo_page(year)
+        __year_solo_page(year)
+    elif content['page'] == 'list':
+        __year_list_page(year, content)
+    elif content['page'] == 'count':
+        __get_count_years_list(year, content)
 
 
-def __song_solo_page(year: Year):
+def __year_solo_page(year: Year):
     year_ = year.year
     year_dict = {
         'songs': get_songs_year(year_),
@@ -22,7 +27,7 @@ def __song_solo_page(year: Year):
     add_to_class(year, year_dict)
 
 
-def __song_list_page(year_: Year, content: dict):
+def __year_list_page(year_: Year, content: dict):
     start = year_.year
     step = year_.step
     if content['type'] == 'all':
@@ -32,3 +37,7 @@ def __song_list_page(year_: Year, content: dict):
     year_.list = years
     del year_.step
     del year_.year
+
+
+def __get_count_years_list(year: Year, content: dict):
+    year.count = get_count_search_year(content)

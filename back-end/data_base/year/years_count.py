@@ -2,7 +2,16 @@ from connection_to_data_base import get_count
 from sql_request_years import _sql_request_years_all, _sql_request_years_search
 
 
-def get_count_year_all() -> int:
+def get_count_search_year(content) -> int:
+    count = 0
+    if content['type'] == 'search':
+        count = __get_count_year_search(content['value'])
+    elif content['type'] == 'all':
+        count = __get_count_year_all()
+    return count
+
+
+def __get_count_year_all() -> int:
     """
     get count billboard years
     :return: count
@@ -13,7 +22,7 @@ def get_count_year_all() -> int:
     return count
 
 
-def get_count_year_search(search) -> int:
+def __get_count_year_search(search) -> int:
     """
     get count billboard years by search year data
     :param search: search year data

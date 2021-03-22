@@ -10,7 +10,7 @@
 {% endblock %}
 
 {% block info %}
- {% for artist in song.artists.values() %}
+ {% for artist in song.artists %}
     <a draggable="false" class="_2b067c7a307d670c6b228bc3f783c022-scss" href="/artist_show/{{artist.id}}">{{artist.name}}</a><span class="_494acef8821cbe69e59a091ea7692360-scss"></span> {% endfor %}
     <span class="f6a6c11d18da1af699a0464367e2189a-scss">{{song.released}}</span><span class="f6a6c11d18da1af699a0464367e2189a-scss"><span class="_0462465b64c9df5f31f2601f892b57d3-scss"> {{song.length}}</span></span>
 {% endblock %}
@@ -49,7 +49,7 @@
       </div>
     </div>
   </div>
-  {% for billboard in song.billboard.values() %}
+  {% for billboard in song.billboard %}
   <div class="c27f49a483c85a5b88b3f37fb918e497-scss" style="height: 56px;">
     <div data-testid="top-sentinel" class="dd70b10e35107a612cc6c1a443a483d2-scss" style="height: 56px;">
       <div class="bddcb131e9b40fa874148a30368d83f8-scss" data-testid="tracklist-row-placeholder" style="height: calc(100% - 56px);">
@@ -121,7 +121,7 @@
       </div>
     </div>
     <div class="_5aac821edb25f0e281f50522021abbe4-scss _6424f268be3505ebab663700d60ebaa6-scss" style="--minimumColumnWidth:180px;">
-      {% for genre in song.genres.values() %}
+      {% for genre in song.genres %}
       <div class="_3802c04052af0bb5d03956299250789e-scss inkblock" onclick="location.href='/genre_show/{{genre.id}}'">
         <div class="b82dc570be22e5eec06a207e5da869ad-scss" draggable="true">
           <div class="_248fa383b31a209d9309399e6dc75de1-scss">
@@ -145,7 +145,7 @@
       {% endfor %}
     </div>
   </section>
-  {% for artist in song.artists.values() if not artist.other_songs == {} %}
+  {% for artist in song.artists if not artist.other_songs == [] %}
   <section class="e07b14d9bfcf8122b6b9b84eaebb6900-scss a8b052ab945f8d056679d7f3ff013e05-scss" aria-label="{{artist.name}} other songs in billboard">
     <div class="_4e5e81e75ea1c55d3c6b7130e90b4e45-scss">
       <div class="_25ab18ebaa7323427b6a3ae748b2fdaa-scss">
@@ -154,7 +154,7 @@
       </div>
     </div>
     <div class="_5aac821edb25f0e281f50522021abbe4-scss _6424f268be3505ebab663700d60ebaa6-scss" style="--minimumColumnWidth:180px;">
-      {% for other_song in artist.other_songs.values() %}
+      {% for other_song in artist.other_songs %}
       <div class="_3802c04052af0bb5d03956299250789e-scss inkblock" onclick="location.href='{{other_song.id}}';">
         <div class="b82dc570be22e5eec06a207e5da869ad-scss" draggable="true">
           <div class="_248fa383b31a209d9309399e6dc75de1-scss">

@@ -51,16 +51,16 @@ visibility: visible;
 <div class="_1066d722d4c5fe45076daa358de0a969-scss banner_image-blurred_image" style="background-image: url(https://images.genius.com/73146d34a3a3019798786d46d2c1266f.802x1000x1.jpg);"></div>
 {% endblock %}
 {% block main_image %}
-<div class="e606f708ec76d36e4cf363817b6b2ffd-scss" draggable="true"><img aria-hidden="false" draggable="false" loading="lazy" src="{{year.genres.1.image}}" alt="{{year.genres.1.image}}" class="_64acb0e26fe0d9dff68a0e9725b2a920-scss _4c838ef3d2b6da1a61669046bbfae3d1-scss" srcset="{{year.songs.1.image}} 150w, {{year.songs.1.image_genre}} 300w, {{year.songs.1.image}} 320w, {{year.songs.1.image}} 640w" sizes="(min-width: 1280px) 232px, 192px"></div>
-   <div class="e606f708ec76d36e4cf363817b6b2ffd-scss" draggable="true"><img aria-hidden="false" draggable="false" loading="lazy" src="{{year.artists.1.image}}" alt="{{year.artists.1.image}}" class="_64acb0e26fe0d9dff68a0e9725b2a920-scss _4c838ef3d2b6da1a61669046bbfae3d1-scss" srcset="{{year.artists.1.image}} 150w, {{year.artists.1.image}} 300w, {{year.artists.1.image}} 320w, {{year.artists.1.image}} 640w" sizes="(min-width: 1280px) 232px, 192px"></div>
-   <div class="e606f708ec76d36e4cf363817b6b2ffd-scss" draggable="true"><img aria-hidden="false" draggable="false" loading="lazy" src="{{year.genres.1.image}}" alt="{{year.genres.1.image}}" class="_64acb0e26fe0d9dff68a0e9725b2a920-scss _4c838ef3d2b6da1a61669046bbfae3d1-scss" srcset="{{year.genres.1.image}} 150w, {{year.genres.1.image}} 300w, {{year.genres.1.image}} 320w, {{year.genres.1.image}} 640w" sizes="(min-width: 1280px) 232px, 192px"></div>
+<div class="e606f708ec76d36e4cf363817b6b2ffd-scss" draggable="true"><img aria-hidden="false" draggable="false" loading="lazy" src="{{year.genres.0.image}}" alt="{{year.genres.0.image}}" class="_64acb0e26fe0d9dff68a0e9725b2a920-scss _4c838ef3d2b6da1a61669046bbfae3d1-scss" srcset="{{year.songs.0.image}} 150w, {{year.songs.0.image_genre}} 300w, {{year.songs.0.image}} 320w, {{year.songs.0.image}} 640w" sizes="(min-width: 1280px) 232px, 192px"></div>
+   <div class="e606f708ec76d36e4cf363817b6b2ffd-scss" draggable="true"><img aria-hidden="false" draggable="false" loading="lazy" src="{{year.artists.0.image}}" alt="{{year.artists.0.image}}" class="_64acb0e26fe0d9dff68a0e9725b2a920-scss _4c838ef3d2b6da1a61669046bbfae3d1-scss" srcset="{{year.artists.0.image}} 150w, {{year.artists.0.image}} 300w, {{year.artists.0.image}} 320w, {{year.artists.0.image}} 640w" sizes="(min-width: 1280px) 232px, 192px"></div>
+   <div class="e606f708ec76d36e4cf363817b6b2ffd-scss" draggable="true"><img aria-hidden="false" draggable="false" loading="lazy" src="{{year.genres.0.image}}" alt="{{year.genres.0.image}}" class="_64acb0e26fe0d9dff68a0e9725b2a920-scss _4c838ef3d2b6da1a61669046bbfae3d1-scss" srcset="{{year.genres.0.image}} 150w, {{year.genres.0.image}} 300w, {{year.genres.0.image}} 320w, {{year.genres.0.image}} 640w" sizes="(min-width: 1280px) 232px, 192px"></div>
 
 {% endblock %}
 
 {% block info %}
-  <a draggable="false" class="_2b067c7a307d670c6b228bc3f783c022-scss" href="/song_show/{{year.songs.1.id}}">{{year.songs.1.title}}</a><span class="_494acef8821cbe69e59a091ea7692360-scss"></span>
-  <a draggable="false" class="_2b067c7a307d670c6b228bc3f783c022-scss" href="/artist_show/{{year.artists.1.id}}">{{year.artists.1.name}} ({{year.artists.1.count}} songs)</a><span class="_494acef8821cbe69e59a091ea7692360-scss"></span>
-  <a draggable="false" class="_2b067c7a307d670c6b228bc3f783c022-scss" href="/genre_show/{{year.genres.1.id}}">{{year.genres.1.name}} ({{year.genres.1.count}} songs)</a><span class="_494acef8821cbe69e59a091ea7692360-scss"></span>
+  <a draggable="false" class="_2b067c7a307d670c6b228bc3f783c022-scss" href="/song_show/{{year.songs.0.id}}">{{year.songs.0.title}}</a><span class="_494acef8821cbe69e59a091ea7692360-scss"></span>
+  <a draggable="false" class="_2b067c7a307d670c6b228bc3f783c022-scss" href="/artist_show/{{year.artists.0.id}}">{{year.artists.0.name}} ({{year.artists.0.count}} songs)</a><span class="_494acef8821cbe69e59a091ea7692360-scss"></span>
+  <a draggable="false" class="_2b067c7a307d670c6b228bc3f783c022-scss" href="/genre_show/{{year.genres.0.id}}">{{year.genres.0.name}} ({{year.genres.0.count}} songs)</a><span class="_494acef8821cbe69e59a091ea7692360-scss"></span>
 {% endblock %}
 
 {% block text_image %}
@@ -121,7 +121,7 @@ visibility: visible;
       </div>
     </div>
     <div class="_5aac821edb25f0e281f50522021abbe4-scss _6424f268be3505ebab663700d60ebaa6-scss" style="--minimumColumnWidth:180px;grid-auto-rows:auto;">
-      {% for song in year.songs.values() %}
+      {% for song in year.songs %}
       <div class="_3802c04052af0bb5d03956299250789e-scss inkblock" onclick="location.href='/song_show/{{song.id}}';">
         <div class="b82dc570be22e5eec06a207e5da869ad-scss" draggable="true">
           <div class="_248fa383b31a209d9309399e6dc75de1-scss">
@@ -160,7 +160,7 @@ visibility: visible;
       </div>
     </div>
     <div class="_5aac821edb25f0e281f50522021abbe4-scss _6424f268be3505ebab663700d60ebaa6-scss" style="--minimumColumnWidth:180px;grid-auto-rows:auto;">
-      {% for artist in year.artists.values() %}
+      {% for artist in year.artists %}
       <div class="_3802c04052af0bb5d03956299250789e-scss inkblock" onclick="location.href='/artist_show/{{artist.id}}';">
         <div class="b82dc570be22e5eec06a207e5da869ad-scss" draggable="true">
           <div class="_248fa383b31a209d9309399e6dc75de1-scss">
@@ -196,7 +196,7 @@ visibility: visible;
       </div>
     </div>
     <div class="_5aac821edb25f0e281f50522021abbe4-scss _6424f268be3505ebab663700d60ebaa6-scss" style="--minimumColumnWidth:180px;grid-auto-rows:auto;">
-      {% for genre in year.genres.values() %}
+      {% for genre in year.genres %}
       <div class="_3802c04052af0bb5d03956299250789e-scss inkblock" onclick="location.href='/genre_show/{{genre.id}}';">
         <div class="b82dc570be22e5eec06a207e5da869ad-scss" draggable="true">
           <div class="_248fa383b31a209d9309399e6dc75de1-scss">

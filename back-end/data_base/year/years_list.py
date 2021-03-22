@@ -10,7 +10,8 @@ def get_years_all(start, step) -> dict:
     :param step: number of rows
     :return: dict of years data
     """
-    years_ = [i for i in range(start, start - step - 1, -1)]
+    last_year = 2020 - start
+    years_ = [i for i in range(last_year, last_year - step, -1)]
     order = 'order by billboard.year DESC'
     years = get_years_list(years_, order)
     return years

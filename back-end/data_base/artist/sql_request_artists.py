@@ -41,9 +41,9 @@ def __get_columns(count: bool) -> str:
     :return: columns
     """
     if count:
-        columns = 'COUNT(*)'
+        columns = ' COUNT(*) '
     else:
-        columns = 'artist.id_artist'
+        columns = ' artist.id_artist '
     return columns
 
 
@@ -57,6 +57,8 @@ def sql_request_artists_by_name(name: str, count=False) -> str:
 
     sql_request = "SELECT " + __get_columns(count) + " FROM artist "
     sql_request += "WHERE POSITION('" + name + "' in LOWER(name_artist))>0"
+    if not count:
+        sql_request += 'order by artist.id_artist'
     return sql_request
 
 
@@ -72,7 +74,8 @@ def sql_request_artists_by_song(song: str, count=False) -> str:
       LEFT JOIN song_performers ON (song_performers.id_song = song.id_song) 
         LEFT JOIN artist ON (song_performers.id_artist = artist.id_artist) """
     sql_request += "WHERE POSITION('" + song + "' in LOWER(title_song))>0"
-
+    if not count:
+        sql_request += 'order by artist.id_artist'
     return sql_request
 
 
@@ -88,7 +91,8 @@ def sql_request_artists_by_genre(genre: str, count=False) -> str:
      LEFT JOIN artist_genre ON (artist_genre.id_genre = genre.id_genre)
       LEFT JOIN artist ON (artist_genre.id_artist = artist.id_artist)"""
     sql_request += "WHERE POSITION('" + genre + "' in LOWER(name_genre))>0"
-
+    if not count:
+        sql_request += 'order by artist.id_artist'
     return sql_request
 
 
@@ -100,6 +104,8 @@ def sql_request_artists_dead(count=False) -> str:
     """
     sql_request = 'SELECT ' + __get_columns(count)
     sql_request += "FROM artist WHERE (POSITION('-' in age_artist)>0) and (select length(age_artist))<4"
+    if not count:
+        sql_request += 'order by artist.id_artist'
     return sql_request
 
 

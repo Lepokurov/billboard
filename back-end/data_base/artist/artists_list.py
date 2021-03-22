@@ -12,7 +12,7 @@ def get_artists_all(start: int, step: int) -> list:
     :return: list artists data
     """
     id_artists = get_ids_all(start, step)
-    order = 'order artist.id_artist'
+    order = 'order by artist.id_artist'
     sql_data = _get_artists_list(id_artists, order)
     artists = create_artists_list(sql_data)
     return artists

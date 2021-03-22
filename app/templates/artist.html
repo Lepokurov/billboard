@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block info %}
-  {% for genre in artist.genres.values() %}
+  {% for genre in artist.genres %}
     <a draggable="false" class="_2b067c7a307d670c6b228bc3f783c022-scss" href="/genre_show/{{genre.id}}">{{genre.name}}</a><span class="_494acef8821cbe69e59a091ea7692360-scss"></span> {% endfor %}
 {% endblock %}
 
@@ -40,8 +40,8 @@
                           </div>
                         </div>
                       </div>
-                      {% for song in artist.songs.values() %}
-                      {% for billboard in song['billboard'].values() %}
+                      {% for song in artist.songs %}
+                      {% for billboard in song.billboard.values() %}
                       <div class="c27f49a483c85a5b88b3f37fb918e497-scss" style="height: 56px;">
                         <div data-testid="top-sentinel" class="dd70b10e35107a612cc6c1a443a483d2-scss" style="height: 56px;">
                           <div class="bddcb131e9b40fa874148a30368d83f8-scss" data-testid="tracklist-row-placeholder" style="height: calc(100% - 56px);">
@@ -116,7 +116,7 @@
                         </div>
                       </div>
                       <div class="_5aac821edb25f0e281f50522021abbe4-scss _6424f268be3505ebab663700d60ebaa6-scss" style="--minimumColumnWidth:180px;grid-auto-rows:auto;">
-                        {% for year in artist.years_info.values() %}
+                        {% for year in artist.years.values() %}
                         <div class="_3802c04052af0bb5d03956299250789e-scss inkblock" onclick="location.href='/year_show/{{year.year}}'">
                           <div class="b82dc570be22e5eec06a207e5da869ad-scss" draggable="true">
                             <div class="_248fa383b31a209d9309399e6dc75de1-scss">
@@ -155,7 +155,7 @@
                         </div>
                       </div>
                       <div class="_5aac821edb25f0e281f50522021abbe4-scss _6424f268be3505ebab663700d60ebaa6-scss" style="--minimumColumnWidth:180px;grid-auto-rows:auto;">
-                        {% for artist_feat in artist.feats.values() %}
+                        {% for artist_feat in artist.feats %}
                         <div class="_3802c04052af0bb5d03956299250789e-scss inkblock" onclick="location.href='/artist_show/{{artist_feat.id}}'">
                           <div class="b82dc570be22e5eec06a207e5da869ad-scss" draggable="true">
                             <div class="_248fa383b31a209d9309399e6dc75de1-scss">
@@ -188,7 +188,7 @@
                         </div>
                       </div>
                       <div class="_5aac821edb25f0e281f50522021abbe4-scss _6424f268be3505ebab663700d60ebaa6-scss" style="--minimumColumnWidth:180px;grid-auto-rows:auto;">
-                        {% for song in artist.songs.values() %}
+                        {% for song in artist.songs %}
                         <div class="_3802c04052af0bb5d03956299250789e-scss inkblock" onclick="location.href='/song_show/{{song.id}}';">
                           <div class="b82dc570be22e5eec06a207e5da869ad-scss" draggable="true">
                             <div class="_248fa383b31a209d9309399e6dc75de1-scss">
