@@ -1,20 +1,21 @@
 from Song import Song
-from general_controller import get_elem_list, get_elem_solo, get_elem_count
+from factory import Factory
+factory = Factory()
 
 
 def get_songs(type_: str, value_: str, page: int, step: int):
-    songs = get_elem_list(Song, type_, value_, page, step)
+    songs = factory.get_elem_list(Song, type_, value_, page, step)
     prepare_song_info_to_show(songs)
     return songs
 
 
 def get_song(id_song):
-    song = get_elem_solo(Song, id_song)
+    song = factory.get_elem_solo(Song, id_song)
     return song
 
 
 def count_songs(type_: str, value_=''):
-    count = get_elem_count(Song, type_, value_)
+    count = factory.get_elem_count(Song, type_, value_)
     return count
 
 

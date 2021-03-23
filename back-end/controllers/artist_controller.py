@@ -1,21 +1,22 @@
 from Artist import Artist
-from general_controller import get_elem_list, get_elem_solo, get_elem_count
+from factory import Factory
+factory = Factory()
 
 
 def get_artists(type_: str, value_: str, page: int, step: int):
-    artist = get_elem_list(Artist, type_, value_, page, step)
+    artist = factory.get_elem_list(Artist, type_, value_, page, step)
     prepare_artist_info_to_show(artist)
     return artist
 
 
 def get_artist(id_song):
-    artist = get_elem_solo(Artist, id_song)
+    artist = factory.get_elem_solo(Artist, id_song)
     age_info_artist(artist)
     return artist
 
 
 def count_artists(type_: str, value_=''):
-    count = get_elem_count(Artist, type_, value_)
+    count = factory.get_elem_count(Artist, type_, value_)
     return count
 
 
