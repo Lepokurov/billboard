@@ -156,7 +156,7 @@ visibility: visible;
       </div>
     </div>
     <div class="_5aac821edb25f0e281f50522021abbe4-scss _6424f268be3505ebab663700d60ebaa6-scss" style="--minimumColumnWidth:180px;grid-auto-rows:auto;">
-      {% for artist in genre.artists.values() %}
+      {% for artist in genre.artists %}
       <div class="_3802c04052af0bb5d03956299250789e-scss inkblock" onclick="location.href='/artist_show/{{artist.id}}'">
         <div class="b82dc570be22e5eec06a207e5da869ad-scss" draggable="true">
           <div class="_248fa383b31a209d9309399e6dc75de1-scss">
@@ -191,7 +191,7 @@ visibility: visible;
       </div>
     </div>
     <div class="_5aac821edb25f0e281f50522021abbe4-scss _6424f268be3505ebab663700d60ebaa6-scss" style="--minimumColumnWidth:180px;grid-auto-rows:auto;">
-      {% for song in genre.songs.values() %}
+      {% for song in genre.songs %}
       <div class="_3802c04052af0bb5d03956299250789e-scss inkblock" onclick="location.href='/song_show/{{song.id}}';">
         <div class="b82dc570be22e5eec06a207e5da869ad-scss" draggable="true">
           <div class="_248fa383b31a209d9309399e6dc75de1-scss">

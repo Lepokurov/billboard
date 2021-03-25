@@ -2,7 +2,7 @@ from Artist import Artist
 from artists_for_description import get_artist, get_featuring_artists
 from artists_list import get_artists_all
 from artists_search import search_artists
-from artsits_count import get_count_search_artist
+from artsits_count import get_count_artists
 from generel_tool import add_to_class
 from genres_for_description import get_genres_artist
 from songs_for_description import get_songs_artist
@@ -46,4 +46,4 @@ def __artist_list_page(artist: Artist, content: dict):
 
 
 def __get_count_artists_list(artist: Artist, content: dict):
-    artist.count = get_count_search_artist(content)
+    artist.count = get_count_artists(content)

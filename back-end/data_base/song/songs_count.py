@@ -4,7 +4,7 @@ from sql_request_songs import sql_request_songs_by_title, sql_request_songs_by_a
     sql_request_songs_by_genre, sql_request_songs_hit_several_times
 
 
-def get_count_search_song(content) -> int:
+def get_count_songs(content) -> int:
     count = 0
     if content['type'] == 'by_title':
         count = __get_count_song_by_title(content['value'])

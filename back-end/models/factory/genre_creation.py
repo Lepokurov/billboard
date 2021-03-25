@@ -1,9 +1,10 @@
 from Genre import Genre
 from artists_for_description import get_artists_genre
 from generel_tool import add_to_class
-from genres_count import get_count_current_genre, get_count_all_genre
+from genres_count import get_count_current_genre, get_count_genres
 from genres_for_description import get_genre
 from genres_list import get_genres_all
+from genres_search import search_genres
 from songs_for_description import get_songs_genre
 from years_for_description import get_years_genre
 
@@ -31,10 +32,10 @@ def __genre_list_page(genre: Genre, content: dict):
     start = genre.id
     step = genre.step
 
-    if content['type'] == 'all':
+    if content['type'] == 'by_song' or content['type'] == 'by_artist':
         genres = get_genres_all(content, start, step)
     else:
-        genres = get_genres_all(content, start, step)
+        genres = search_genres(content, start, step)
 
     genre.list = genres
     del genre.step
@@ -42,4 +43,4 @@ def __genre_list_page(genre: Genre, content: dict):
 
 
 def __get_count_genres_list(genre: Genre, content: dict):
-    genre.count = get_count_all_genre()
+    genre.count = get_count_genres(content)

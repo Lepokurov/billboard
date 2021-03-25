@@ -1,15 +1,36 @@
 from connection_to_data_base import get_count
-from models import create_genres_count
+from mapper_genre import create_genres_count
 from sql_constructor_general import get_count_table
-from sql_request_genres import sql_request_count_songs_genre, sql_request_count_artists_genre
+from sql_request_genres import sql_request_count_songs_genre, sql_request_count_artists_genre, sql_constructor_genres, \
+    sql_request_genres
 
 
-def get_count_all_genre() -> int:
+def get_count_genres(content) -> int:
+    count = 0
+    if content['type'] == 'by_song' or content['type'] == 'by_artist':
+        count = __get_count_all_genre()
+    elif content['type'] == 'search':
+        count = __get_count_genre_search(content['value'])
+    return count
+
+
+def __get_count_all_genre() -> int:
     """
     all count of genres
     :return: count of genres
     """
     count = get_count(get_count_table('genre'))
+    return count
+
+
+def __get_count_genre_search(search) -> int:
+    """
+    get count of genres by search data
+    :param search: search year data
+    :return: count
+    """
+    sql_request = sql_request_genres('by_song', search, True)
+    count = get_count(sql_request)
     return count
 
 

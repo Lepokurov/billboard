@@ -13,21 +13,21 @@ def get_artists_all(start: int, step: int) -> list:
     """
     id_artists = get_ids_all(start, step)
     order = 'order by artist.id_artist'
-    sql_data = _get_artists_list(id_artists, order)
-    artists = create_artists_list(sql_data)
+    artists = _get_artists_list(id_artists, order)
     return artists
 
 
-def _get_artists_list(id_artists: list, order='') -> tuple:
+def _get_artists_list(id_artists: list, order='') -> list:
     """
      Main function for getting list of artists by ids
     :param id_artists: list of required ids of artists
     :param order: request information of 'order by'
-    :return: sql tuple of artists data or empty tuple if doesn't have required information
+    :return: list of artists data or empty list if doesn't have required information
     """
     sql_request = sql_constructor_artists(id_artists, order)
     if sql_request == '':
-        return ()
+        return []
     sql_data = get_data_from_db(sql_request)
 
-    return sql_data
+    artists = create_artists_list(sql_data)
+    return artists

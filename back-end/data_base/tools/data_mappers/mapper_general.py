@@ -19,3 +19,8 @@ def create_data_of_year(sql_data: tuple) -> list:
         data_['count'] = sql_line[3]
         data.append(data_)
     return data
+
+
+def create_ids(sql_data):
+    ids = [int(sql_line[0]) for sql_line in sql_data]
+    return ids

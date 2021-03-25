@@ -3,7 +3,7 @@ from connection_to_data_base import get_count
 from sql_constructor_general import get_count_table
 
 
-def get_count_search_artist(content) -> int:
+def get_count_artists(content) -> int:
     count = 0
     if content['type'] == 'by_name':
         count = __get_count_artists_by_name(content['value'])

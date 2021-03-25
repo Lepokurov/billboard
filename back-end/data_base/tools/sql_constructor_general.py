@@ -1,5 +1,5 @@
 from connection_to_data_base import get_data_from_db
-from models import create_ids
+from mapper_general import create_ids
 
 
 def limit_information(sql_request: str, start, step) -> str:

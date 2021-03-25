@@ -1,38 +1,43 @@
 from sql_constructor_general import limit_information
 
 
-def sql_request_genres(sort) -> str:
+def sql_request_genres(sort, search, count=False) -> str:
     """
     Request to get genre list
-    :param sort: genre sorting by 'sort', the default sorting is by song
+    :param sort: genre sort by_song/by_artist
+    :param search: if required info by name
+    :param count: if required count of genres
     :return: sql request
     """
-    sql_request = ''
-    if sort == 'song':
-        sql_request = """
-        SELECT genre.id_genre, genre.name_genre, genre.image_genre, COUNT(genre.id_genre) AS counts
-        FROM genre 
-         LEFT JOIN song_genre ON (song_genre.id_genre = genre.id_genre) 
-        GROUP BY genre.id_genre"""
-    elif sort == 'artist':
-        sql_request = """
-        SELECT genre.id_genre, genre.name_genre, genre.image_genre, COUNT(genre.id_genre) AS counts
-        FROM genre 
-         LEFT JOIN artist_genre ON (artist_genre.id_genre = genre.id_genre) 
-        GROUP BY genre.id_genre"""
+    if count:
+        sql_request = 'select count(*) from('
+    else:
+        sql_request = ''
+    sql_request += "SELECT genre.id_genre, genre.name_genre, genre.image_genre, COUNT(genre.id_genre) AS counts " +\
+                   "FROM genre "
+    if sort == 'by_song':
+        sql_request += 'LEFT JOIN song_genre ON (song_genre.id_genre = genre.id_genre) '
 
+    elif sort == 'by_artist':
+        sql_request += 'LEFT JOIN artist_genre ON (artist_genre.id_genre = genre.id_genre) '
+    if search:
+        sql_request += "WHERE POSITION('"+search+"' in LOWER(name_genre))>0"
+    sql_request += ' GROUP BY genre.id_genre '
+    if count:
+        sql_request += ')a'
     return sql_request
 
 
-def sql_constructor_genres(start, step, sort) -> str:
+def sql_constructor_genres(start, step, sort, search='') -> str:
     """
     Constructor of the sql request of a genre list
     :param start: the start row
     :param step: number of rows
-    :param sort: genre sorting by 'sort', the default sorting is by song
+    :param sort: genre sort by_song/by_artist
+    :param search: if required info by name
     :return: complete request for genre list data
     """
-    sql_request = sql_request_genres(sort)
+    sql_request = sql_request_genres(sort, search)
     sql_request += ' order by counts DESC '
     sql_request = limit_information(sql_request, start, step)
 

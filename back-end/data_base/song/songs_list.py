@@ -12,13 +12,11 @@ def get_songs_all(start: int, step: int) -> list:
     :return: dict songs data
     """
     id_songs = get_ids_all(start, step)
-    sql_data = _get_songs_list(id_songs)
-
-    songs = create_songs_list(sql_data)
+    songs = _get_songs_list(id_songs)
     return songs
 
 
-def _get_songs_list(id_songs: list, order='') -> tuple:
+def _get_songs_list(id_songs: list, order='') -> list:
     """
     Main function for getting list of songs by ids
     :param id_songs: list required ids of songs
@@ -27,10 +25,12 @@ def _get_songs_list(id_songs: list, order='') -> tuple:
     """
     sql_request = _sql_constructor_songs(id_songs, order)
     if sql_request == '':
-        return ()
+        return []
 
     sql_data = get_data_from_db(sql_request)
-    return sql_data
+
+    songs = create_songs_list(sql_data)
+    return songs
 
 
 

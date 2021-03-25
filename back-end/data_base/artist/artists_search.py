@@ -1,5 +1,4 @@
 from artists_list import _get_artists_list
-from mapper_artist import create_artists_list
 from sql_constructor_general import get_ids_by_request
 from sql_request_artists import sql_request_artists_by_name, sql_request_artists_by_song, \
     sql_request_artists_by_genre, sql_request_artists_dead
@@ -13,9 +12,8 @@ def search_artists(content: dict, start: int, step: int) -> list:
     :param step: number of rows
     :return: dict of artists data by the required parameters
     """
-    id_songs = __get_ids_artists_by_search(content, start, step)
-    sql_data = _get_artists_list(id_songs, content['order'])
-    artists = create_artists_list(sql_data)
+    id_artists = __get_ids_artists_by_search(content, start, step)
+    artists = _get_artists_list(id_artists, content['order'])
     return artists
 
 

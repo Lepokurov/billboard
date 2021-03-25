@@ -3,7 +3,7 @@ from artists_for_description import get_artists_of_year
 from generel_tool import add_to_class
 from genres_for_description import get_genres_year
 from songs_for_description import get_songs_year
-from years_count import get_count_search_year
+from years_count import get_count_years
 from years_list import get_years_all
 from years_search import search_years
 
@@ -40,4 +40,4 @@ def __year_list_page(year_: Year, content: dict):
 
 
 def __get_count_years_list(year: Year, content: dict):
-    year.count = get_count_search_year(content)
+    year.count = get_count_years(content)

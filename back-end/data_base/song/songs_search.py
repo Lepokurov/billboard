@@ -1,4 +1,3 @@
-from mapper_song import create_songs_list
 from songs_list import _get_songs_list
 from sql_constructor_general import get_ids_by_request
 import sql_request_songs
@@ -13,9 +12,7 @@ def search_songs(content: dict, start: int, step: int) -> list:
     :return: dict songs data by the required parameters
     """
     id_songs = __get_ids_songs_by_search(content, start, step)
-    sql_data = _get_songs_list(id_songs, content['order'])
-
-    songs = create_songs_list(sql_data)
+    songs = _get_songs_list(id_songs, content['order'])
     return songs
 
 
@@ -51,7 +48,7 @@ def __get_songs_ids_by_title(content, start, step) -> list:
     :return: list ids of songs by title
     """
     sql_request = sql_request_songs.sql_request_songs_by_title(content['value'])
-    content['order'] = 'order by billboard.position, artist.id_artist'
+    content['order'] = 'order by billboard.year DESC, artist.id_artist'
     ids = get_ids_by_request(sql_request, start, step)
     return ids
 

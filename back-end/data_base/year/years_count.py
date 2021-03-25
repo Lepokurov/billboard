@@ -2,7 +2,7 @@ from connection_to_data_base import get_count
 from sql_request_years import _sql_request_years_all, _sql_request_years_search
 
 
-def get_count_search_year(content) -> int:
+def get_count_years(content) -> int:
     count = 0
     if content['type'] == 'search':
         count = __get_count_year_search(content['value'])
