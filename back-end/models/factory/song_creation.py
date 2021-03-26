@@ -10,6 +10,11 @@ from years_for_description import get_billboard_of_song
 
 
 def song_information(song: Song, content: dict):
+    """
+    change song class with required attr by content
+    :param song: Song class
+    :param content: dictionary that contain the type and value of searching
+    """
     if content['page'] == 'solo':
         __song_solo_page(song)
     elif content['page'] == 'list':
@@ -19,6 +24,10 @@ def song_information(song: Song, content: dict):
 
 
 def __song_solo_page(song: Song):
+    """
+    add attrs to song elem for solo page showing
+    :param song: Song class
+    """
     id_song = song.id
     song_ = get_song(id_song)
     artists = get_performers_of_song(id_song)
@@ -32,6 +41,11 @@ def __song_solo_page(song: Song):
 
 
 def __song_list_page(song: Song, content: dict):
+    """
+    add attrs to song elem for list page showing
+    :param song: Song class
+    :param content: dictionary that contain the type and value of searching
+    """
     start = song.id
     step = song.step
     if content['type'] == 'all':
@@ -44,4 +58,9 @@ def __song_list_page(song: Song, content: dict):
 
 
 def __get_count_songs_list(song: Song, content: dict):
+    """
+    add count attr to song elem
+    :param song: Song class
+    :param content: dictionary that contain the type and value of searching
+    """
     song.count = get_count_songs(content)

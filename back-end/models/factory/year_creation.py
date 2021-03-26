@@ -9,6 +9,11 @@ from years_search import search_years
 
 
 def year_information(year: Year, content: dict):
+    """
+    change year class with required attr by content
+    :param year: Year class
+    :param content: dictionary that contain the type and value of searching
+    """
     if content['page'] == 'solo':
         __year_solo_page(year)
     elif content['page'] == 'list':
@@ -18,6 +23,10 @@ def year_information(year: Year, content: dict):
 
 
 def __year_solo_page(year: Year):
+    """
+    add attrs to year elem for solo page showing
+    :param year: Year class
+    """
     year_ = year.year
     year_dict = {
         'songs': get_songs_year(year_),
@@ -28,6 +37,11 @@ def __year_solo_page(year: Year):
 
 
 def __year_list_page(year_: Year, content: dict):
+    """
+    add attrs to year elem for list page showing
+    :param year_: Year class
+    :param content: dictionary that contain the type and value of searching
+    """
     start = year_.year
     step = year_.step
     if content['type'] == 'all':
@@ -40,4 +54,9 @@ def __year_list_page(year_: Year, content: dict):
 
 
 def __get_count_years_list(year: Year, content: dict):
+    """
+    add count attr to year elem
+    :param year: Year class
+    :param content: dictionary that contain the type and value of searching
+    """
     year.count = get_count_years(content)

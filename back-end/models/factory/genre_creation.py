@@ -10,6 +10,11 @@ from years_for_description import get_years_genre
 
 
 def genre_information(genre: Genre, content: dict):
+    """
+    change genre class with required attr by content
+    :param genre: Genre class
+    :param content: dictionary that contain the type and value of searching
+    """
     if content['page'] == 'solo':
         __genre_solo_page(genre)
     if content['page'] == 'list':
@@ -19,6 +24,10 @@ def genre_information(genre: Genre, content: dict):
 
 
 def __genre_solo_page(genre: Genre):
+    """
+    add attrs to genre elem for solo page showing
+    :param genre: Genre class
+    """
     id_genre = genre.id
     genre_ = get_genre(id_genre)
     genre_['songs'] = get_songs_genre(id_genre)
@@ -29,6 +38,11 @@ def __genre_solo_page(genre: Genre):
 
 
 def __genre_list_page(genre: Genre, content: dict):
+    """
+    add attrs to genre elem for list page showing
+    :param genre: Genre class
+    :param content: dictionary that contain the type and value of searching
+    """
     start = genre.id
     step = genre.step
 
@@ -43,4 +57,9 @@ def __genre_list_page(genre: Genre, content: dict):
 
 
 def __get_count_genres_list(genre: Genre, content: dict):
+    """
+    add count attr to genre elem
+    :param genre: Genre class
+    :param content: dictionary that contain the type and value of searching
+    """
     genre.count = get_count_genres(content)

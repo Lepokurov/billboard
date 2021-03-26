@@ -20,7 +20,7 @@ def get_count_of_page(count_elem):
     return max_page
 
 
-########### SONGS ##################
+# SONGS
 @app.route('/', methods=["GET"])
 def index():
     return redirect(url_for('year_default'))
@@ -94,14 +94,10 @@ def hit_several_times():
     title_page = 'Songs hit billboard several times: ' + str(max_count)
 
     return redirect(url_for('songs_show', page=1, type_=type_, value_='_'))
-
-
 #####################################
 
 
-########### Artists ##################
-
-
+# ARTISTS
 @app.route('/artists/<type_>/<value_>/<page>', methods=["GET"])
 def artists_show(page, type_, value_):
     global max_count, title_page
@@ -161,12 +157,10 @@ def artists_dead():
     title_page = 'Dead artists: ' + str(max_count)
 
     return redirect(url_for('artists_show', page=1, type_=type_, value_='_'))
-
-
 #####################################
 
 
-############# Years ##################
+# YEARS
 @app.route('/years/<type_>/<value_>/<page>', methods=["GET"])
 def years_show(page, type_, value_):
     global max_count, title_page
@@ -196,12 +190,10 @@ def year_search():
     max_count = count_years(type_, search)
     title_page = 'Years of ' + search + ': ' + str(max_count)
     return redirect(url_for('years_show', page=1, type_=type_, value_=search))
-
-
 #####################################
 
 
-########### Genres ##################
+# GENRES
 @app.route('/genres/<type_>/<value_>/<page>', methods=["GET"])
 def genres_show(page, type_, value_):
     global max_count, title_page
@@ -247,10 +239,10 @@ def genres_search():
     max_count = count_genres(type_, search)
     title_page = 'Genres of ' + search + ': ' + str(max_count)
     return redirect(url_for('genres_show', page=1, type_=type_, value_=search))
-#########################################
+#####################################
 
 
-############ Solo pages #################
+# SOLO PAGES
 @app.route('/song_show/<id_song>', methods=["GET"])
 def song_show(id_song):
     song = get_song(id_song)

@@ -3,6 +3,11 @@ from sql_request_years import _sql_request_years_all, _sql_request_years_search
 
 
 def get_count_years(content) -> int:
+    """
+    get count of year by required content
+    :param content: dictionary that contain the type and value of searching
+    :return: count
+    """
     count = 0
     if content['type'] == 'search':
         count = __get_count_year_search(content['value'])

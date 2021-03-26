@@ -6,6 +6,11 @@ from sql_request_genres import sql_request_count_songs_genre, sql_request_count_
 
 
 def get_count_genres(content) -> int:
+    """
+    get count of genre by required content
+    :param content: dictionary that contain the type and value of searching
+    :return: count
+    """
     count = 0
     if content['type'] == 'by_song' or content['type'] == 'by_artist':
         count = __get_count_all_genre()
@@ -16,7 +21,7 @@ def get_count_genres(content) -> int:
 
 def __get_count_all_genre() -> int:
     """
-    all count of genres
+    get count of all genre
     :return: count of genres
     """
     count = get_count(get_count_table('genre'))
