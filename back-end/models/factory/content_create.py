@@ -13,7 +13,7 @@ def create_content(page_: str, type_='', value_='') -> dict:
         type_ = 'all'
 
     if not (type_ == 'by_name' or type_ == 'by_genre' or type_ == 'by_song'
-            or type_ == 'dead' or type_ == 'by_title' or type_ == 'by_year'
+            or type_ == 'dead' or type_ == 'group' or type_ == 'by_title' or type_ == 'by_year'
             or type_ == 'by_artist' or type_ == 'hit_several_times' or type_ == 'search'
             or type_ == 'all'):
         raise TypeError

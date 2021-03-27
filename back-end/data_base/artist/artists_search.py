@@ -1,7 +1,7 @@
 from artists_list import _get_artists_list
 from sql_constructor_general import get_ids_by_request
 from sql_request_artists import sql_request_artists_by_name, sql_request_artists_by_song, \
-    sql_request_artists_by_genre, sql_request_artists_dead
+    sql_request_artists_by_genre, sql_request_artists_dead, sql_request_artists_group
 
 
 def search_artists(content: dict, start: int, step: int) -> list:
@@ -34,13 +34,15 @@ def __get_ids_artists_by_search(content: dict, start: int, step: int) -> list:
         ids = __get_artists_ids_by_song(content, start, step)
     elif content['type'] == 'dead':
         ids = __get_artists_ids_dead(content, start, step)
+    elif content['type'] == 'group':
+        ids = __get_artists_ids_group(content, start, step)
 
     return ids
 
 
 def __get_artists_ids_by_name(content: dict, start: int, step: int) -> list:
     """
-    Getting ids of artists by the name artist and add to content a sort information
+    Get ids of artists by the name artist and add to content a sort information
     :param content: dictionary that contain the type and value of searching
     :param start: the start row
     :param step: number of rows
@@ -54,7 +56,7 @@ def __get_artists_ids_by_name(content: dict, start: int, step: int) -> list:
 
 def __get_artists_ids_by_song(content: dict, start: int, step: int) -> list:
     """
-    Getting ids of artists by title performed songs and add to content a sort information
+    Get ids of artists by title performed songs and add to content a sort information
     :param content: dictionary that contain the type and value of searching
     :param start: the start row
     :param step: number of rows
@@ -68,7 +70,7 @@ def __get_artists_ids_by_song(content: dict, start: int, step: int) -> list:
 
 def __get_artists_ids_by_genre(content: dict, start: int, step: int) -> list:
     """
-    Getting ids of artists by genre artist and add to content a sort information
+    Get ids of artists by genre artist and add to content a sort information
     :param content: dictionary that contain the type and value of searching
     :param start: the start row
     :param step: number of rows
@@ -82,13 +84,27 @@ def __get_artists_ids_by_genre(content: dict, start: int, step: int) -> list:
 
 def __get_artists_ids_dead(content: dict, start: int, step: int) -> list:
     """
-    Getting ids of dead artists and add to content a sort information
+    Get ids of dead artists and add to content a sort information
     :param content: dictionary that contain the type and value of searching
     :param start: the start row
     :param step: number of rows
     :return: list ids of dead artists
     """
     sql_request = sql_request_artists_dead()
+    content['order'] = 'order by artist.id_artist'
+    ids = get_ids_by_request(sql_request, start, step)
+    return ids
+
+
+def __get_artists_ids_group(content: dict, start: int, step: int) -> list:
+    """
+    Get ids of groups and add to content a sort information
+    :param content: dictionary that contain the type and value of searching
+    :param start: the start row
+    :param step: number of rows
+    :return: list ids of dead artists
+    """
+    sql_request = sql_request_artists_group()
     content['order'] = 'order by artist.id_artist'
     ids = get_ids_by_request(sql_request, start, step)
     return ids

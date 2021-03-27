@@ -157,6 +157,16 @@ def artists_dead():
     title_page = 'Dead artists: ' + str(max_count)
 
     return redirect(url_for('artists_show', page=1, type_=type_, value_='_'))
+
+
+@app.route('/artist_group', methods=["POST"])
+def artists_group():
+    global max_count, title_page
+    type_ = 'group'
+    max_count = count_artists(type_)
+    title_page = 'Groups: ' + str(max_count)
+
+    return redirect(url_for('artists_show', page=1, type_=type_, value_='_'))
 #####################################
 
 

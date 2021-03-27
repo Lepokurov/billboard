@@ -109,6 +109,19 @@ def sql_request_artists_dead(count=False) -> str:
     return sql_request
 
 
+def sql_request_artists_group(count=False) -> str:
+    """
+    Request to get ids of dead artists
+    :param count: if need count then changed request
+    :return: str request
+    """
+    sql_request = 'SELECT ' + __get_columns(count)
+    sql_request += "FROM artist WHERE artist.group_artist = 'True'"
+    if not count:
+        sql_request += 'order by artist.id_artist'
+    return sql_request
+
+
 def sql_request_artist(id_artist) -> str:
     """
     Request to get all info by current artist id

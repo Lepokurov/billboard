@@ -4,7 +4,7 @@
 {% endblock %}
 
 {% block search %}
- <div class="wrapper" style="width: 576px; margin-left: -288px">
+ <div class="wrapper" style="width: 720px; margin-left: -360px">
      <div class="block">
       </form>
             <form action = "/artist_by_name" method = "post">
@@ -31,6 +31,13 @@
             <form action = "/artist_dead" method = "post">
               <p><input type="submit" value="Artists"></p>
               <i class="fa fa-search">Dead</i>
+      </form>
+       </div>
+      <div class="block">
+      </form>
+            <form action = "/artist_group" method = "post">
+              <p><input type="submit" value="Artists"></p>
+              <i class="fa fa-search">Group</i>
       </form>
        </div>
 </div>

@@ -18,6 +18,8 @@ def get_count_artists(content) -> int:
         count = __get_count_artists_by_genre(content['value'])
     elif content['type'] == 'dead':
         count = __get_count_artists_dead()
+    elif content['type'] == 'group':
+        count = __get_count_artists_group()
     elif content['type'] == 'all':
         count = __get_count_all_artist()
     return count
@@ -76,6 +78,17 @@ def __get_count_artists_dead() -> int:
     :return: count
     """
     sql_request = sql_request_artists.sql_request_artists_dead(True)
+
+    count = get_count(sql_request)
+    return count
+
+
+def __get_count_artists_group() -> int:
+    """
+    Get count of the dead artists
+    :return: count
+    """
+    sql_request = sql_request_artists.sql_request_artists_group(True)
 
     count = get_count(sql_request)
     return count
