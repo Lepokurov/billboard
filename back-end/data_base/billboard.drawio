@@ -1,0 +1,95 @@
+<mxfile host="app.diagrams.net" modified="2021-03-26T15:40:38.259Z" agent="5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.182 YaBrowser/21.2.4.172 Yowser/2.5 Safari/537.36" etag="ZOVMjN4tyVFrEEQzEBWP" version="14.5.1" type="github">
+  <diagram name="Page-1" id="efa7a0a1-bf9b-a30e-e6df-94a7791c09e9">
+    <mxGraphModel dx="862" dy="477" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="826" pageHeight="1169" background="#114B5F" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="bBt455tI-ZfNrnlpVXcq-121" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#028090;fontColor=#E4FDE1;labelBackgroundColor=#114B5F;" edge="1" parent="1" source="bBt455tI-ZfNrnlpVXcq-114" target="bBt455tI-ZfNrnlpVXcq-119">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="180" y="80" />
+              <mxPoint x="180" y="190" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bBt455tI-ZfNrnlpVXcq-114" value="&lt;p style=&quot;margin: 0px ; margin-top: 4px ; text-align: center ; text-decoration: underline&quot;&gt;&lt;strong&gt;song&lt;/strong&gt;&lt;/p&gt;&lt;hr&gt;&lt;p style=&quot;margin: 0px ; margin-left: 8px&quot;&gt;id_song&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 8px&quot;&gt;title_song&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 8px&quot;&gt;released_song&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 8px&quot;&gt;length_song&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 8px&quot;&gt;album_song&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 8px&quot;&gt;image_song&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 8px&quot;&gt;wiki_link_song&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 8px&quot;&gt;youtube_link&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 8px&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;strokeColor=#028090;shadow=1;fillColor=#F45B69;fontColor=#E4FDE1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="39.99999999999999" width="120" height="152.54" as="geometry" />
+        </mxCell>
+        <mxCell id="bBt455tI-ZfNrnlpVXcq-133" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#028090;fontColor=#E4FDE1;labelBackgroundColor=#114B5F;" edge="1" parent="1" source="bBt455tI-ZfNrnlpVXcq-115" target="bBt455tI-ZfNrnlpVXcq-125">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="560" y="116.26999999999998" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="490" y="116" />
+              <mxPoint x="490" y="200" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bBt455tI-ZfNrnlpVXcq-115" value="&lt;p style=&quot;margin: 0px ; margin-top: 4px ; text-align: center ; text-decoration: underline&quot;&gt;&lt;strong&gt;artist&lt;/strong&gt;&lt;/p&gt;&lt;hr&gt;&lt;p style=&quot;margin: 0px ; margin-left: 8px&quot;&gt;id_artist&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 8px&quot;&gt;name_artist&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 8px&quot;&gt;age_artist&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 8px&quot;&gt;group_artist&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 8px&quot;&gt;image_artist&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 8px&quot;&gt;wiki_link_artist&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 8px&quot;&gt;bio&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;strokeColor=#028090;shadow=1;fillColor=#F45B69;fontColor=#E4FDE1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="46.269999999999996" width="120" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="bBt455tI-ZfNrnlpVXcq-129" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#028090;fontColor=#E4FDE1;labelBackgroundColor=#114B5F;" edge="1" parent="1" source="bBt455tI-ZfNrnlpVXcq-116" target="bBt455tI-ZfNrnlpVXcq-126">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="340" y="288" />
+              <mxPoint x="340" y="330" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bBt455tI-ZfNrnlpVXcq-136" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=-0.011;entryY=0.692;entryDx=0;entryDy=0;entryPerimeter=0;strokeColor=#028090;fontColor=#E4FDE1;labelBackgroundColor=#114B5F;" edge="1" parent="1" source="bBt455tI-ZfNrnlpVXcq-116" target="bBt455tI-ZfNrnlpVXcq-125">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="560" y="288.135" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="490" y="280" />
+              <mxPoint x="490" y="215" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bBt455tI-ZfNrnlpVXcq-116" value="&lt;p style=&quot;margin: 0px ; margin-top: 4px ; text-align: center ; text-decoration: underline&quot;&gt;&lt;strong&gt;genre&lt;/strong&gt;&lt;/p&gt;&lt;hr&gt;&lt;p style=&quot;margin: 0px ; margin-left: 8px&quot;&gt;id_genre&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 8px&quot;&gt;name_genre&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 8px&quot;&gt;image_genre&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;strokeColor=#028090;shadow=1;fillColor=#F45B69;fontColor=#E4FDE1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="240" width="120" height="96.27" as="geometry" />
+        </mxCell>
+        <mxCell id="bBt455tI-ZfNrnlpVXcq-119" value="&lt;p style=&quot;margin: 0px ; margin-top: 4px ; text-align: center ; text-decoration: underline&quot;&gt;&lt;strong&gt;song_performers&lt;/strong&gt;&lt;/p&gt;&lt;hr&gt;&lt;p style=&quot;margin: 0px ; margin-left: 8px&quot;&gt;id_song&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 8px&quot;&gt;id_artist&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;strokeColor=#028090;shadow=1;fillColor=#F45B69;fontColor=#E4FDE1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="150" width="110" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="bBt455tI-ZfNrnlpVXcq-120" value="&lt;p style=&quot;margin: 0px ; margin-top: 4px ; text-align: center ; text-decoration: underline&quot;&gt;&lt;strong&gt;billboard&lt;/strong&gt;&lt;/p&gt;&lt;hr&gt;&lt;p style=&quot;margin: 0px ; margin-left: 8px&quot;&gt;id_song&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 8px&quot;&gt;position&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 8px&quot;&gt;year&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;strokeColor=#028090;shadow=1;fillColor=#F45B69;fontColor=#E4FDE1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="260" width="120" height="96.27" as="geometry" />
+        </mxCell>
+        <mxCell id="bBt455tI-ZfNrnlpVXcq-122" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#028090;fontColor=#E4FDE1;labelBackgroundColor=#114B5F;" edge="1" parent="1" source="bBt455tI-ZfNrnlpVXcq-114" target="bBt455tI-ZfNrnlpVXcq-120">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="180" y="170" as="sourcePoint" />
+            <mxPoint x="230" y="290" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="180" y="80" />
+              <mxPoint x="180" y="298" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bBt455tI-ZfNrnlpVXcq-124" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.25;exitDx=0;exitDy=0;strokeColor=#028090;fontColor=#E4FDE1;labelBackgroundColor=#114B5F;" edge="1" parent="1" source="bBt455tI-ZfNrnlpVXcq-115" target="bBt455tI-ZfNrnlpVXcq-119">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="360" y="229.99714285714288" as="sourcePoint" />
+            <mxPoint x="390" y="313.7685714285714" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="340" y="81" />
+              <mxPoint x="340" y="200" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bBt455tI-ZfNrnlpVXcq-125" value="&lt;p style=&quot;margin: 4px 0px 0px ; text-align: center&quot;&gt;&lt;strong&gt;artist_genre&lt;/strong&gt;&lt;/p&gt;&lt;hr&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px&quot;&gt;id_artist&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px&quot;&gt;id_genre&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;strokeColor=#028090;shadow=1;fillColor=#F45B69;fontColor=#E4FDE1;" vertex="1" parent="1">
+          <mxGeometry x="520" y="160" width="110" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="bBt455tI-ZfNrnlpVXcq-126" value="&lt;p style=&quot;margin: 0px ; margin-top: 4px ; text-align: center ; text-decoration: underline&quot;&gt;&lt;strong&gt;song_genre&lt;/strong&gt;&lt;/p&gt;&lt;hr&gt;&lt;p style=&quot;margin: 0px ; margin-left: 8px&quot;&gt;id_song&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 8px&quot;&gt;id_genre&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;strokeColor=#028090;shadow=1;fillColor=#F45B69;fontColor=#E4FDE1;" vertex="1" parent="1">
+          <mxGeometry x="210" y="276.27" width="110" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="bBt455tI-ZfNrnlpVXcq-131" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#028090;fontColor=#E4FDE1;labelBackgroundColor=#114B5F;" edge="1" parent="1" source="bBt455tI-ZfNrnlpVXcq-114" target="bBt455tI-ZfNrnlpVXcq-126">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="170" y="90.0344827586207" as="sourcePoint" />
+            <mxPoint x="210" y="200.0344827586207" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="180" y="80" />
+              <mxPoint x="180" y="316" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
